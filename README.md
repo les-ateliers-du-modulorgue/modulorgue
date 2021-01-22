@@ -1,6 +1,3 @@
 # modulorgue
 
-
-mik
-
-fhio
+Dévelopement de l'interface graphique pour le modulorgue.
