@@ -1,4 +1,4 @@
-#N canvas 236 19 792 976 12;
+#N canvas 414 7 792 976 12;
 #X obj 123 32 tgl 100 0 2b8 empty BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 235 32 tgl 100 0 2b4 empty FLUTE_4' 21 -8 1 13 -72168 -66577
@@ -26,7 +26,7 @@
 #X obj 12 287 tgl 100 0 pb16 empty BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 230 566 ossia.device modulorgue;
-#N canvas 870 226 982 1030 registres 1;
+#N canvas 879 440 982 1030 registres 1;
 #X obj 246 51 loadbang;
 #X msg 387 36 \; pd dsp 1;
 #X obj 113 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -38,10 +38,10 @@
 #X obj 350 109 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 352 130 ctlout 22 15;
-#X obj 446 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 446 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 448 129 ctlout 23 15;
-#X obj 755 357 ctlout 24 15;
+#X obj 743 142 ctlout 24 15;
 #X obj 183 85 r 2b16;
 #X obj 244 86 r 2b8;
 #X obj 352 86 r 2b4;
@@ -155,8 +155,10 @@
 -1 -1;
 #X obj 551 529 delay 50;
 #X obj 733 40 ossia.model registres;
-#X obj 754 329 ossia.param flute/2 @type bool;
-#X obj 725 366 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 742 114 ossia.param flute/2 @type bool;
+#X obj 692 150 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 701 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X connect 0 0 51 0;
 #X connect 2 0 3 0;
@@ -265,27 +267,37 @@
 #X connect 109 0 63 0;
 #X connect 111 0 10 0;
 #X connect 111 0 112 0;
-#X restore 61 531 pd registres;
+#X connect 113 0 111 0;
+#X restore 26 466 pd registres;
 #X obj 228 508 loadbang;
 #X msg 231 539 expose oscquery;
-#N canvas 735 49 1057 520 interfaces 1;
-#X obj 483 126 r 2b2;
-#X obj 487 211 s 2b2s;
-#X obj 400 189 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 579 230 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 425 249 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#N canvas 1078 29 1057 520 interfaces 1;
+#X obj 764 130 r 2b2;
+#X obj 768 215 s 2b2s;
 #X obj 80 61 ossia.view registres;
-#X obj 488 162 ossia.remote flute/2;
-#X connect 0 0 2 0;
-#X connect 0 0 6 0;
-#X connect 6 0 1 0;
-#X connect 6 0 4 0;
-#X connect 6 1 3 0;
-#X restore 68 562 pd interfaces;
+#X obj 769 166 ossia.remote flute/2;
+#X obj 678 172 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 3 0;
+#X connect 3 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 0;
+#X restore 33 497 pd interfaces;
 #X msg 419 529 namespace;
+#X msg 50 424 save mem1;
+#X msg 141 428 save mem2;
+#X msg 242 431 load mem1;
+#X msg 323 434 load mem2;
+#X obj 227 623 print;
+#X obj 155 480 list prepend preset;
+#X obj 149 510 list trim;
+#X connect 13 0 23 0;
 #X connect 15 0 16 0;
 #X connect 16 0 13 0;
 #X connect 18 0 13 0;
+#X connect 19 0 24 0;
+#X connect 20 0 24 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 13 0;
