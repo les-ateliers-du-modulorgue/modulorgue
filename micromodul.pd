@@ -1,32 +1,32 @@
-#N canvas 151 145 792 976 12;
-#X obj 123 32 tgl 100 0 2b8 empty BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 235 32 tgl 100 0 2b4 empty FLUTE_4' 21 -8 1 13 -72168 -66577
+#N canvas 650 41 605 662 12;
+#X obj 123 32 tgl 100 0 2b8 2b8s BOURDON_8' 11 -8 1 13 -72168 -66577
+-66577 1 1;
+#X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 348 32 tgl 100 0 2b223 2b223s QUINTE_2'_2/3 6 -8 1 13 -72168
 -66577 -66577 0 1;
 #X obj 460 32 tgl 100 0 2b2 2b2s FLUTE_2 20 -8 1 13 -72168 -66577 -66577
 0 1;
-#X obj 12 32 tgl 100 0 2b16 empty BOURDON_16' 8 -8 1 13 -72168 -66577
+#X obj 12 32 tgl 100 0 2b16 2b16s BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 123 158 tgl 100 0 1b8 empty BOURDON_8' 11 -8 1 13 -72168 -66577
+#X obj 123 158 tgl 100 0 1b8 1b8s BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 235 158 tgl 100 0 1b4 empty FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 348 158 tgl 100 0 1b223 empty QUINTE_2'_2/3 6 -8 1 13 -72168
+#X obj 235 158 tgl 100 0 1b4 1b4s FLUTE_4' 21 -8 1 13 -72168 -66577
+-66577 1 1;
+#X obj 348 158 tgl 100 0 1b223 1b223s QUINTE_2'_2/3 6 -8 1 13 -72168
 -66577 -66577 0 1;
-#X obj 460 158 tgl 100 0 1b2 empty FLUTE_2 20 -8 1 13 -72168 -66577
+#X obj 460 158 tgl 100 0 1b2 1b2S FLUTE_2 20 -8 1 13 -72168 -66577
+-66577 1 1;
+#X obj 12 157 tgl 100 0 1b16 1b16s BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 12 158 tgl 100 0 1b16 empty BOURDON_16' 8 -8 1 13 -72168 -66577
+#X obj 123 287 tgl 100 0 pb8 pb8s BOURDON_8' 11 -8 1 13 -72168 -66577
+-66577 1 1;
+#X obj 235 287 tgl 100 0 pb4 pb4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 123 287 tgl 100 0 pb8 empty BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 235 287 tgl 100 0 pb4 empty FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 12 287 tgl 100 0 pb16 empty BOURDON_16' 8 -8 1 13 -72168 -66577
--66577 0 1;
+#X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
+-66577 1 1;
 #X obj 230 566 ossia.device modulorgue;
-#N canvas 886 484 918 502 registres 1;
+#N canvas 863 653 842 471 registres 1;
 #X obj 74 183 ctlin 40 11;
 #X obj 74 208 > 0;
 #X floatatom 75 259 5 0 0 0 - - -;
@@ -77,152 +77,112 @@
 -1 -1;
 #X obj 542 286 delay 50;
 #X obj 63 44 ossia.model registres;
-#N canvas 653 427 1164 301 rang1 1;
-#X obj 113 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 114 132 ctlout 20 15;
-#X obj 242 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 244 131 ctlout 21 15;
-#X obj 350 109 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 352 130 ctlout 22 15;
-#X obj 446 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 448 129 ctlout 23 15;
-#X obj 743 142 ctlout 24 15;
-#X obj 183 85 r 2b16;
-#X obj 244 86 r 2b8;
-#X obj 352 86 r 2b4;
-#X obj 448 86 r 2b223;
-#X msg 86 86 note 2 \$1 \$2;
-#X obj 86 61 pack;
-#X obj 163 38 > 0;
-#X floatatom 123 62 5 0 0 0 - - -;
-#X obj 163 61 * 125;
-#X obj 86 38 notein 2;
-#X obj 216 131 b8;
-#X obj 86 132 b16;
-#X obj 692 150 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 701 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 770 43 ossia.model rang1;
-#X obj 742 114 ossia.param flute/2 @type bool;
-#X connect 0 0 1 0;
-#X connect 0 0 20 1;
-#X connect 2 0 3 0;
-#X connect 2 0 19 1;
-#X connect 4 0 5 0;
-#X connect 6 0 7 0;
-#X connect 9 0 0 0;
-#X connect 10 0 2 0;
-#X connect 11 0 4 0;
-#X connect 12 0 6 0;
-#X connect 13 0 19 0;
-#X connect 13 0 20 0;
-#X connect 14 0 13 0;
-#X connect 15 0 17 0;
-#X connect 16 0 14 1;
-#X connect 17 0 16 0;
-#X connect 18 0 14 0;
-#X connect 18 1 15 0;
-#X connect 22 0 24 0;
-#X connect 24 0 8 0;
-#X connect 24 0 21 0;
+#N canvas 727 7 697 231 rang1 1;
+#X obj 366 135 ctlout 22 15;
+#X obj 464 134 ctlout 23 15;
+#X obj 580 131 ctlout 24 15;
+#X msg 14 124 note 2 \$1 \$2;
+#X obj 14 99 pack;
+#X obj 91 76 > 0;
+#X floatatom 51 100 5 0 0 0 - - -;
+#X obj 91 99 * 125;
+#X obj 14 76 notein 2;
+#X obj 221 185 b8;
+#X obj 98 187 b16;
+#X obj 581 75 ossia.param flute/2 @type bool, f 12;
+#X obj 464 76 ossia.param quinte/223 @type bool, f 12;
+#X obj 366 77 ossia.param flute/4 @type bool, f 12;
+#X obj 264 136 ctlout 21 15;
+#X obj 264 78 ossia.param bourdon/8 @type bool, f 12;
+#X obj 148 77 ossia.param bourdon/16 @type bool, f 12;
+#X obj 148 135 ctlout 20 15;
+#X obj 13 25 ossia.model clavier2;
+#X connect 3 0 9 0;
+#X connect 3 0 10 0;
+#X connect 4 0 3 0;
+#X connect 5 0 7 0;
+#X connect 6 0 4 1;
+#X connect 7 0 6 0;
+#X connect 8 0 4 0;
+#X connect 8 1 5 0;
+#X connect 11 0 2 0;
+#X connect 12 0 1 0;
+#X connect 13 0 0 0;
+#X connect 15 0 14 0;
+#X connect 15 0 9 1;
+#X connect 16 0 10 1;
+#X connect 16 0 17 0;
 #X restore 70 100 pd rang1;
 #X obj 246 51 loadbang;
 #X msg 387 36 \; pd dsp 1;
 #X obj 315 50 delay 200;
 #X obj 483 32 ctlin 0 10;
 #X floatatom 483 57 5 0 0 0 - - -;
-#N canvas 57 343 848 300 rang2 1;
-#X obj 58 106 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 187 106 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 295 105 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 391 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 491 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 59 128 ctlout 10 15;
-#X obj 297 126 ctlout 12 15;
-#X obj 393 125 ctlout 13 15;
-#X obj 493 125 ctlout 14 15;
-#X obj 128 79 r 1b16;
-#X obj 189 80 r 1b8;
-#X obj 297 80 r 1b4;
-#X obj 393 80 r 1b223;
-#X obj 493 78 r 1b2;
-#X obj 31 33 notein 1;
-#X obj 31 56 pack;
-#X msg 31 80 note 1 \$1 \$2;
-#X obj 108 33 > 0;
-#X floatatom 68 57 5 0 0 0 - - -;
-#X obj 108 56 * 125;
-#X obj 161 127 b8;
-#X obj 189 127 ctlout 11 15;
-#X obj 31 128 b16;
-#X connect 0 0 5 0;
-#X connect 0 0 22 1;
-#X connect 1 0 20 1;
-#X connect 1 0 21 0;
-#X connect 2 0 6 0;
-#X connect 3 0 7 0;
-#X connect 4 0 8 0;
-#X connect 9 0 0 0;
-#X connect 10 0 1 0;
-#X connect 11 0 2 0;
-#X connect 12 0 3 0;
-#X connect 13 0 4 0;
-#X connect 14 0 15 0;
-#X connect 14 1 17 0;
-#X connect 15 0 16 0;
-#X connect 16 0 20 0;
-#X connect 16 0 22 0;
-#X connect 17 0 19 0;
-#X connect 18 0 15 1;
-#X connect 19 0 18 0;
+#N canvas 727 261 703 176 rang2 1;
+#X obj 175 107 ctlout 10 15;
+#X obj 389 99 ctlout 12 15;
+#X obj 487 97 ctlout 13 15;
+#X obj 605 93 ctlout 14 15;
+#X obj 25 36 notein 1;
+#X obj 25 62 pack;
+#X msg 25 83 note 1 \$1 \$2;
+#X obj 102 36 > 0;
+#X floatatom 62 60 5 0 0 0 - - -;
+#X obj 102 59 * 125;
+#X obj 238 144 b8;
+#X obj 294 102 ctlout 11 15;
+#X obj 27 137 b16;
+#X obj 605 40 ossia.param flute/2 @type bool, f 12;
+#X obj 488 41 ossia.param quinte/223 @type bool, f 12;
+#X obj 390 42 ossia.param flute/4 @type bool, f 12;
+#X obj 288 43 ossia.param bourdon/8 @type bool, f 12;
+#X obj 172 42 ossia.param bourdon/16 @type bool, f 12;
+#X obj 27 9 ossia.model clavier1;
+#X connect 4 0 5 0;
+#X connect 4 1 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 0;
+#X connect 6 0 12 0;
+#X connect 7 0 9 0;
+#X connect 8 0 5 1;
+#X connect 9 0 8 0;
+#X connect 13 0 3 0;
+#X connect 14 0 2 0;
+#X connect 15 0 1 0;
+#X connect 16 0 11 0;
+#X connect 16 0 10 1;
+#X connect 17 0 0 0;
+#X connect 17 0 12 1;
 #X restore 237 100 pd rang2;
-#N canvas 0 50 455 232 rang3 1;
-#X obj 60 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 189 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 297 100 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 32 75 note 3 \$1 \$2;
-#X obj 129 74 r pb16;
-#X obj 190 75 r pb8;
-#X obj 298 75 r pb4;
-#X obj 60 123 ctlout 1 15;
-#X obj 190 122 ctlout 2 15;
-#X obj 298 121 ctlout 3 15;
-#X obj 32 48 pack;
-#X obj 109 25 > 0;
-#X floatatom 69 49 5 0 0 0 - - -;
-#X obj 109 48 * 125;
-#X obj 32 25 notein 3;
-#X obj 162 122 b8;
-#X obj 32 123 b16;
-#X connect 0 0 7 0;
-#X connect 0 0 16 1;
-#X connect 1 0 8 0;
-#X connect 1 0 15 1;
-#X connect 2 0 9 0;
-#X connect 3 0 15 0;
-#X connect 3 0 16 0;
+#N canvas 759 465 533 165 rang3 1;
+#X msg 31 89 note 3 \$1 \$2;
+#X obj 186 99 ctlout 1 15;
+#X obj 304 97 ctlout 2 15;
+#X obj 406 90 ctlout 3 15;
+#X obj 31 62 pack;
+#X obj 108 39 > 0;
+#X floatatom 68 63 5 0 0 0 - - -;
+#X obj 108 62 * 125;
+#X obj 31 39 notein 3;
+#X obj 269 137 b8;
+#X obj 94 135 b16;
+#X obj 404 25 ossia.param flute/4 @type bool, f 12;
+#X obj 302 26 ossia.param bourdon/8 @type bool, f 12;
+#X obj 186 25 ossia.param bourdon/16 @type bool, f 12;
+#X obj 31 3 ossia.model pedale;
+#X connect 0 0 9 0;
+#X connect 0 0 10 0;
 #X connect 4 0 0 0;
-#X connect 5 0 1 0;
-#X connect 6 0 2 0;
-#X connect 10 0 3 0;
-#X connect 11 0 13 0;
-#X connect 12 0 10 1;
-#X connect 13 0 12 0;
-#X connect 14 0 10 0;
-#X connect 14 1 11 0;
+#X connect 5 0 7 0;
+#X connect 6 0 4 1;
+#X connect 7 0 6 0;
+#X connect 8 0 4 0;
+#X connect 8 1 5 0;
+#X connect 11 0 3 0;
+#X connect 12 0 2 0;
+#X connect 12 0 9 1;
+#X connect 13 0 1 0;
+#X connect 13 0 10 1;
 #X restore 417 104 pd rang3;
 #X connect 0 0 1 0;
 #X connect 1 0 7 0;
@@ -278,17 +238,127 @@
 #X restore 26 466 pd registres;
 #X obj 228 508 loadbang;
 #X msg 231 539 expose oscquery;
-#N canvas 760 48 1092 372 interfaces 1;
-#X obj 764 130 r 2b2;
-#X obj 768 215 s 2b2s;
-#X obj 80 61 ossia.view registres;
-#X obj 769 166 ossia.remote rang1/flute/2;
-#X obj 678 172 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 27 69 852 561 interfaces 1;
+#X obj 591 328 ossia.view registres;
+#X obj 403 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X connect 0 0 3 0;
-#X connect 3 0 1 0;
-#X connect 3 0 4 0;
-#X connect 4 0 3 0;
+#X obj 400 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 252 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 249 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 107 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 104 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 681 20 r 2b2;
+#X obj 682 92 s 2b2s;
+#X obj 540 23 r 2b223;
+#X obj 541 92 s 2b223s;
+#X obj 422 22 r 2b4;
+#X obj 423 101 s 2b4s;
+#X obj 395 103 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 392 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 244 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 241 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 99 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 96 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 271 21 r 2b8;
+#X obj 126 21 r 2b16;
+#X obj 126 101 s 2b16s;
+#X obj 272 100 s 2b8s;
+#X obj 410 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 407 271 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 259 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 256 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 114 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 111 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 134 131 r 1b16;
+#X obj 141 300 ossia.remote pedale/bourdon/16, f 19;
+#X obj 286 300 ossia.remote pedale/bourdon/8, f 18;
+#X obj 437 301 ossia.remote pedale/flute/4, f 17;
+#X obj 134 160 ossia.remote clavier1/bourdon/16, f 16;
+#X obj 278 160 ossia.remote clavier1/bourdon/8, f 15;
+#X obj 430 161 ossia.remote clavier1/flute/4, f 15;
+#X obj 549 158 ossia.remote clavier1/quinte/223, f 17;
+#X obj 689 158 ossia.remote clavier1/flute/2, f 16;
+#X obj 126 50 ossia.remote clavier2/bourdon/16, f 16;
+#X obj 271 50 ossia.remote clavier2/bourdon/8, f 15;
+#X obj 422 51 ossia.remote clavier2/flute/4, f 15;
+#X obj 541 48 ossia.remote clavier2/quinte/223, f 17;
+#X obj 681 48 ossia.remote clavier2/flute/2, f 16;
+#X obj 279 131 r 1b8;
+#X obj 430 132 r 1b4;
+#X obj 548 133 r 1b223;
+#X obj 689 130 r 1b2;
+#X obj 141 271 r pb16;
+#X obj 286 271 r pb8;
+#X obj 437 272 r pb4;
+#X obj 142 350 s pb16s;
+#X obj 287 350 s pb8s;
+#X obj 438 351 s pb4s;
+#X obj 135 210 s 1b16s;
+#X obj 280 210 s 1b8s;
+#X obj 431 211 s 1b4s;
+#X obj 551 214 s 1b223s;
+#X obj 690 202 s 1b2s;
+#X connect 2 0 35 0;
+#X connect 4 0 34 0;
+#X connect 6 0 33 0;
+#X connect 7 0 42 0;
+#X connect 9 0 41 0;
+#X connect 11 0 40 0;
+#X connect 14 0 40 0;
+#X connect 16 0 39 0;
+#X connect 18 0 38 0;
+#X connect 19 0 39 0;
+#X connect 20 0 38 0;
+#X connect 24 0 32 0;
+#X connect 26 0 31 0;
+#X connect 28 0 30 0;
+#X connect 29 0 33 0;
+#X connect 30 0 27 0;
+#X connect 30 0 50 0;
+#X connect 31 0 25 0;
+#X connect 31 0 51 0;
+#X connect 32 0 23 0;
+#X connect 32 0 52 0;
+#X connect 33 0 5 0;
+#X connect 33 0 53 0;
+#X connect 34 0 3 0;
+#X connect 34 0 54 0;
+#X connect 35 0 1 0;
+#X connect 35 0 55 0;
+#X connect 36 0 56 0;
+#X connect 37 0 57 0;
+#X connect 38 0 17 0;
+#X connect 38 0 21 0;
+#X connect 39 0 15 0;
+#X connect 39 0 22 0;
+#X connect 40 0 12 0;
+#X connect 40 0 13 0;
+#X connect 41 0 10 0;
+#X connect 42 0 8 0;
+#X connect 43 0 34 0;
+#X connect 44 0 35 0;
+#X connect 45 0 36 0;
+#X connect 46 0 37 0;
+#X connect 47 0 30 0;
+#X connect 48 0 31 0;
+#X connect 49 0 32 0;
 #X restore 33 497 pd interfaces;
 #X msg 419 529 namespace;
 #X msg 50 424 save mem1;
