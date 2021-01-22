@@ -11,11 +11,9 @@
           ws.send("/?SET_PORT=0");
           ws.send("/");
       }
-      var play = document.getElementById('play');
-      var note = document.getElementById('note');
-      var velocity = document.getElementById('velocity');
-      var modratio = document.getElementById('modratio');
-      var modgain = document.getElementById('modgain');
+      var c2bourdon16 = document.getElementById('1bourdon16');
+	var c2flute2 = document.getElementById('c2flute2');
+	var modgain = document.getElementById('modgain');
 
       ws.onmessage = function(mess) {
           // An OSCQuery value json looks like
@@ -24,64 +22,149 @@
           var json = JSON.parse(mess.data);
           var keys = Object.keys(json);
 
-          var play_k = keys.findIndex(function(val) { return val == "/play"; });
-          var note_k = keys.findIndex(function(val) { return val == "/note"; });
-          var modratio_k = keys.findIndex(function(val) { return val == "/modratio"; });
+          var c2bourdon16_k = keys.findIndex(function(val) { return val == "/play"; });
+		  var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
           var modgain_k = keys.findIndex(function(val) { return val == "/modgain"; });
 
-          if(note_k != -1)
-          {
-            note.innerText = json["/note"][0];
-            velocity.innerText = json["/note"][1];
-          }
-          if(modratio_k != -1)
-          {
-              modratio.value = json["/modratio"];
-          }
+
           if(modgain_k != -1)
           {
               modgain.value = json["/modgain"];
           }
-          if(play_k != -1)
+          if(c2bourdon16_k != -1)
           {
-              play.checked = json["/play"];
+              c2bourdon16.checked = json["/registres/clavier2/bourdon/16"];
           }
-
+		  if(c2bourdon8_k != -1)
+          {
+              c2bourdon8.checked = json["/registres/clavier2/bourdon/8"];
+          }
+		  if(c2flute4_k != -1)
+          {
+              c2flute4.checked = json["/registres/clavier2/flute/4"];
+          }
+		  if(c2quinte2_k != -1)
+          {
+              c2quinte2.checked = json["/registres/clavier2/quinte/2"];
+          }
+		  if(c2flute2_k != -1)
+          {
+              c2flute2.checked = json["/registres/clavier2/flute/2"];
+          }
+		  if(c1bourdon16_k != -1)
+          {
+              c1bourdon16.checked = json["/registres/clavier1/bourdon/16"];
+          }
+		  if(c1bourdon8_k != -1)
+          {
+              c1bourdon8.checked = json["/registres/clavier1/bourdon/8"];
+          }
+		  if(c1flute4_k != -1)
+          {
+              c2flute4.checked = json["/registres/clavier1/flute/4"];
+          }
+		  if(c1quinte2_k != -1)
+          {
+              c1quinte2.checked = json["/registres/clavier1/quinte/2"];
+          }
+		  if(c1flute2_k != -1)
+          {
+              c1flute2.checked = json["/registres/clavier1/flute/2"];
+          }
+		  if(pdbourdon16_k != -1)
+          {
+              pdbourdon16.checked = json["/registres/pedale/bourdon/16"];
+          }
+		  if(pdbourdon8_k != -1)
+          {
+              c2bourdon8.checked = json["/registres/pedale/bourdon/8"];
+          }
+		  if(pdflute4_k != -1)
+          {
+              pdflute4.checked = json["/registres/pedale/flute/4"];
+          }
+		
 
       }
-      modratio.oninput = function(ev) {
-              ws.send('{ "/modratio": ' + modratio.value + '}');
-              console.log('{ "/modratio": ' + modratio.value + '}');
-      };
+
 
       modgain.oninput = function(ev) {
               ws.send('{ "/modgain": ' + modgain.value + '}');
               console.log('{ "/modgain": ' + modgain.value + '}');
       };
 
-      play.oninput = function(ev) {
-              ws.send('{ "/play": ' + play.checked + '}');
-              console.log('{ "/play": ' + play.checked + '}');
+      c2bourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
+              console.log('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
       };
+	  c2bourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/bourdon/8": ' + c2bourdon8.checked + '}');
+              console.log('{ "/registres/clavier2/bourdon/8": ' + c2bourdon8.checked + '}');
+      };
+	  c2flute4.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/flute/4": ' + c2flute4.checked + '}');
+              console.log('{ "/registres/clavier2/flute/4": ' + c2flute4.checked + '}');
+      };
+	  c2flute2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
+              console.log('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
+      };
+	  c2quinte2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/quinte/2": ' + c2quinte2.checked + '}');
+              console.log('{ "/registres/clavier2/quinte/2": ' + c2quinte2.checked + '}');
+      };
+	  c1bourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/bourdon/16": ' + c1bourdon16.checked + '}');
+              console.log('{ "/registres/clavier1/bourdon/16": ' + c1bourdon16.checked + '}');
+      };
+	  c1bourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/bourdon/8": ' + c1bourdon8.checked + '}');
+              console.log('{ "/registres/clavier1/bourdon/8": ' + c1bourdon8.checked + '}');
+      };
+	  c1flute4.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/flute/4": ' + c1flute4.checked + '}');
+              console.log('{ "/registres/clavier1/flute/4": ' + c1flute4.checked + '}');
+      };
+	  c1flute2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
+              console.log('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
+      };
+	  c1quinte2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/quinte/2": ' + c1quinte2.checked + '}');
+              console.log('{ "/registres/clavier1/quinte/2": ' + c1quinte2.checked + '}');
+      };
+	  pdbourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/bourdon/16": ' + pdbourdon16.checked + '}');
+              console.log('{ "/registres/pedale/bourdon/16": ' + pdbourdon16.checked + '}');
+      };
+	  pdbourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/bourdon/8": ' + pdbourdon8.checked + '}');
+              console.log('{ "/registres/pedale/bourdon/8": ' + pdbourdon8.checked + '}');
+      };
+	  pdflute4.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
+              console.log('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
+      };
+	
     }
 </script>
 
 <body style="background-color:#E1E1E1;">
 <body onload="init()">
 <table>
- <tr><td>Bourdon 16'</td><td><input id="1flute2" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="1bourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="1flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="1quinte2" type="checkbox"/></td>
- <td>Flute 2'</td><td><input id="1flute2" type="checkbox"/></td></tr>
- <tr><td>Bourdon 16'</td><td><input id="2flute2" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="2bourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="2flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="2quinte2" type="checkbox"/></td>
- <td>Flute 2'</td><td><input id="2flute2" type="checkbox"/></td></tr>
- <tr><td>Bourdon 16'</td><td><input id="3flute2" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="3bourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="3flute4" type="checkbox"/></td></tr>
+ <tr><td>Bourdon 16'</td><td><input id="c2bourdon16" type="checkbox"/></td>
+ <td>Bourdon 8'</td><td><input id="c2bourdon8" type="checkbox"/></td>
+ <td>Flute 4'</td><td><input id="c2flute4" type="checkbox"/></td>
+ <td>Quinte 2' 2/3</td><td><input id="c2quinte2" type="checkbox"/></td>
+ <td>Flute 2'</td><td><input id="c2flute2" type="checkbox"/></td></tr>
+ <tr><td>Bourdon 16'</td><td><input id="c1bourdon16" type="checkbox"/></td>
+ <td>Bourdon 8'</td><td><input id="c1bourdon8" type="checkbox"/></td>
+ <td>Flute 4'</td><td><input id="c1flute4" type="checkbox"/></td>
+ <td>Quinte 2' 2/3</td><td><input id="c1quinte2" type="checkbox"/></td>
+ <td>Flute 2'</td><td><input id="c1flute2" type="checkbox"/></td></tr>
+ <tr><td>Bourdon 16'</td><td><input id="pdbourdon16" type="checkbox"/></td>
+ <td>Bourdon 8'</td><td><input id="pdbourdon8" type="checkbox"/></td>
+ <td>Flute 4'</td><td><input id="pdflute4" type="checkbox"/></td></tr>
 
  <tr><td>Mod. gain</td><td><input id="modgain" type="range" min="-40" max="6"/></td></tr>
 </table>
