@@ -1,30 +1,30 @@
-#N canvas 650 41 605 662 12;
+#N canvas 301 73 605 662 12;
 #X obj 123 32 tgl 100 0 2b8 2b8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 348 32 tgl 100 0 2b223 2b223s QUINTE_2'_2/3 6 -8 1 13 -72168
 -66577 -66577 0 1;
 #X obj 460 32 tgl 100 0 2b2 2b2s FLUTE_2 20 -8 1 13 -72168 -66577 -66577
-0 1;
+1 1;
 #X obj 12 32 tgl 100 0 2b16 2b16s BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 123 158 tgl 100 0 1b8 1b8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
+-66577 1 1;
 #X obj 235 158 tgl 100 0 1b4 1b4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 348 158 tgl 100 0 1b223 1b223s QUINTE_2'_2/3 6 -8 1 13 -72168
--66577 -66577 0 1;
+-66577 -66577 1 1;
 #X obj 460 158 tgl 100 0 1b2 1b2S FLUTE_2 20 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 12 157 tgl 100 0 1b16 1b16s BOURDON_16' 8 -8 1 13 -72168 -66577
--66577 0 1;
+-66577 1 1;
 #X obj 123 287 tgl 100 0 pb8 pb8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 1 1;
-#X obj 235 287 tgl 100 0 pb4 pb4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
+#X obj 235 287 tgl 100 0 pb4 pb4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 1 1;
+#X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
+-66577 0 1;
 #X obj 230 566 ossia.device modulorgue;
 #N canvas 863 653 842 471 registres 1;
 #X obj 74 183 ctlin 40 11;
@@ -240,15 +240,15 @@
 #X msg 231 539 expose oscquery;
 #N canvas 27 69 852 561 interfaces 1;
 #X obj 591 328 ossia.view registres;
-#X obj 403 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 403 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 400 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 252 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 252 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 249 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 107 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 107 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 104 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -262,7 +262,7 @@
 1;
 #X obj 392 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 244 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 244 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 241 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -274,15 +274,15 @@
 #X obj 126 21 r 2b16;
 #X obj 126 101 s 2b16s;
 #X obj 272 100 s 2b8s;
-#X obj 410 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 410 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 407 271 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 259 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 259 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 256 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 114 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 114 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 111 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -370,6 +370,7 @@
 #X obj 149 510 list trim;
 #N canvas 459 41 450 300 nfonctions 1;
 #X restore 37 559 pd nfonctions;
+#X obj 463 442 ggee/shell;
 #X connect 13 0 23 0;
 #X connect 15 0 16 0;
 #X connect 16 0 13 0;
