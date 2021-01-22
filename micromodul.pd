@@ -1,7 +1,7 @@
-#N canvas 151 145 792 976 12;
+#N canvas 46 0 610 878 12;
 #X obj 123 32 tgl 100 0 2b8 empty BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 235 32 tgl 100 0 2b4 empty FLUTE_4' 21 -8 1 13 -72168 -66577
+#X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 348 32 tgl 100 0 2b223 2b223s QUINTE_2'_2/3 6 -8 1 13 -72168
 -66577 -66577 0 1;
@@ -26,7 +26,7 @@
 #X obj 12 287 tgl 100 0 pb16 empty BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 230 566 ossia.device modulorgue;
-#N canvas 886 484 918 502 registres 1;
+#N canvas 441 247 918 502 registres 1;
 #X obj 74 183 ctlin 40 11;
 #X obj 74 208 > 0;
 #X floatatom 75 259 5 0 0 0 - - -;
@@ -77,24 +77,18 @@
 -1 -1;
 #X obj 542 286 delay 50;
 #X obj 63 44 ossia.model registres;
-#N canvas 653 427 1164 301 rang1 1;
+#N canvas 495 432 1164 301 rang1 1;
 #X obj 113 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 114 132 ctlout 20 15;
 #X obj 242 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 244 131 ctlout 21 15;
-#X obj 350 109 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 352 130 ctlout 22 15;
-#X obj 446 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 448 129 ctlout 23 15;
-#X obj 743 142 ctlout 24 15;
+#X obj 536 157 ctlout 22 15;
+#X obj 647 157 ctlout 23 15;
+#X obj 763 154 ctlout 24 15;
 #X obj 183 85 r 2b16;
 #X obj 244 86 r 2b8;
-#X obj 352 86 r 2b4;
-#X obj 448 86 r 2b223;
 #X msg 86 86 note 2 \$1 \$2;
 #X obj 86 61 pack;
 #X obj 163 38 > 0;
@@ -103,40 +97,34 @@
 #X obj 86 38 notein 2;
 #X obj 216 131 b8;
 #X obj 86 132 b16;
-#X obj 692 150 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 701 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 770 43 ossia.model rang1;
-#X obj 742 114 ossia.param flute/2 @type bool;
+#X obj 629 45 ossia.model rang1;
+#X obj 764 98 ossia.param flute/2 @type bool, f 12;
+#X obj 647 99 ossia.param quinte/223 @type bool, f 12;
+#X obj 536 99 ossia.param flute/4 @type bool, f 12;
 #X connect 0 0 1 0;
-#X connect 0 0 20 1;
+#X connect 0 0 16 1;
 #X connect 2 0 3 0;
-#X connect 2 0 19 1;
-#X connect 4 0 5 0;
-#X connect 6 0 7 0;
-#X connect 9 0 0 0;
-#X connect 10 0 2 0;
-#X connect 11 0 4 0;
-#X connect 12 0 6 0;
-#X connect 13 0 19 0;
-#X connect 13 0 20 0;
-#X connect 14 0 13 0;
-#X connect 15 0 17 0;
-#X connect 16 0 14 1;
-#X connect 17 0 16 0;
-#X connect 18 0 14 0;
-#X connect 18 1 15 0;
-#X connect 22 0 24 0;
-#X connect 24 0 8 0;
-#X connect 24 0 21 0;
+#X connect 2 0 15 1;
+#X connect 7 0 0 0;
+#X connect 8 0 2 0;
+#X connect 9 0 15 0;
+#X connect 9 0 16 0;
+#X connect 10 0 9 0;
+#X connect 11 0 13 0;
+#X connect 12 0 10 1;
+#X connect 13 0 12 0;
+#X connect 14 0 10 0;
+#X connect 14 1 11 0;
+#X connect 18 0 6 0;
+#X connect 19 0 5 0;
+#X connect 20 0 4 0;
 #X restore 70 100 pd rang1;
 #X obj 246 51 loadbang;
 #X msg 387 36 \; pd dsp 1;
 #X obj 315 50 delay 200;
 #X obj 483 32 ctlin 0 10;
 #X floatatom 483 57 5 0 0 0 - - -;
-#N canvas 57 343 848 300 rang2 1;
+#N canvas 57 343 848 300 rang2 0;
 #X obj 58 106 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 187 106 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -278,17 +266,29 @@
 #X restore 26 466 pd registres;
 #X obj 228 508 loadbang;
 #X msg 231 539 expose oscquery;
-#N canvas 760 48 1092 372 interfaces 1;
-#X obj 764 130 r 2b2;
-#X obj 768 215 s 2b2s;
+#N canvas 626 37 1092 372 interfaces 1;
+#X obj 689 130 r 2b2;
+#X obj 690 202 s 2b2s;
 #X obj 80 61 ossia.view registres;
-#X obj 769 166 ossia.remote rang1/flute/2;
-#X obj 678 172 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 689 158 ossia.remote rang1/flute/2, f 16;
+#X obj 548 133 r 2b223;
+#X obj 549 202 s 2b223s;
+#X obj 549 158 ossia.remote rang1/quinte/223, f 17;
+#X obj 430 132 r 2b4;
+#X obj 431 211 s 2b4s;
+#X obj 403 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
+#X obj 400 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 430 161 ossia.remote rang1/flute/4, f 15;
 #X connect 0 0 3 0;
 #X connect 3 0 1 0;
-#X connect 3 0 4 0;
-#X connect 4 0 3 0;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;
+#X connect 7 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X connect 11 0 9 0;
 #X restore 33 497 pd interfaces;
 #X msg 419 529 namespace;
 #X msg 50 424 save mem1;
