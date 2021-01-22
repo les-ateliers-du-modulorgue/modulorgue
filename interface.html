@@ -11,8 +11,20 @@
           ws.send("/?SET_PORT=0");
           ws.send("/");
       }
-      var c2bourdon16 = document.getElementById('1bourdon16');
+    var c2bourdon16 = document.getElementById('c2bourdon16');
+	var c2bourdon8 = document.getElementById('c2bourdon8');
+	var c2flute4 = document.getElementById('c2flute4');
+	var c2quinte22323 = document.getElementById('c2quinte22323');
 	var c2flute2 = document.getElementById('c2flute2');
+	var c1bourdon16 = document.getElementById('c1bourdon16');
+	var c1bourdon8 = document.getElementById('c1bourdon8');
+	var c1flute4 = document.getElementById('c1flute4');
+	var c1quinte22323 = document.getElementById('c1quinte22323');
+	var c1flute2 = document.getElementById('c1flute2');
+	var pdbourdon16 = document.getElementById('pdbourdon16');
+	var pdbourdon8 = document.getElementById('pdbourdon8');
+	var pdflute4 = document.getElementById('pdflute4');
+	
 	var modgain = document.getElementById('modgain');
 
       ws.onmessage = function(mess) {
@@ -22,7 +34,9 @@
           var json = JSON.parse(mess.data);
           var keys = Object.keys(json);
 
-          var c2bourdon16_k = keys.findIndex(function(val) { return val == "/play"; });
+          var c2bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier2/bourdon/16"; });
+		  var c2bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier2/bourdon/8"; });
+		  var c1quinte22323_k = keys.findIndex(function(val) { return val == "/registres/clavier2/bourdon/8"; });
 		  var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
           var modgain_k = keys.findIndex(function(val) { return val == "/modgain"; });
 
@@ -43,9 +57,9 @@
           {
               c2flute4.checked = json["/registres/clavier2/flute/4"];
           }
-		  if(c2quinte2_k != -1)
+		  if(c2quinte22323_k != -1)
           {
-              c2quinte2.checked = json["/registres/clavier2/quinte/2"];
+              c2quinte22323.checked = json["/registres/clavier2/quinte/223"];
           }
 		  if(c2flute2_k != -1)
           {
@@ -63,9 +77,9 @@
           {
               c2flute4.checked = json["/registres/clavier1/flute/4"];
           }
-		  if(c1quinte2_k != -1)
+		  if(c1quinte223_k != -1)
           {
-              c1quinte2.checked = json["/registres/clavier1/quinte/2"];
+              c1quinte223.checked = json["/registres/clavier1/quinte/223"];
           }
 		  if(c1flute2_k != -1)
           {
@@ -109,9 +123,9 @@
               ws.send('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
               console.log('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
       };
-	  c2quinte2.oninput = function(ev) {
-              ws.send('{ "/registres/clavier2/quinte/2": ' + c2quinte2.checked + '}');
-              console.log('{ "/registres/clavier2/quinte/2": ' + c2quinte2.checked + '}');
+	  c2quinte22323.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/quinte/223": ' + c2quinte22323.checked + '}');
+              console.log('{ "/registres/clavier2/quinte/223": ' + c2quinte22323.checked + '}');
       };
 	  c1bourdon16.oninput = function(ev) {
               ws.send('{ "/registres/clavier1/bourdon/16": ' + c1bourdon16.checked + '}');
@@ -129,9 +143,9 @@
               ws.send('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
               console.log('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
       };
-	  c1quinte2.oninput = function(ev) {
-              ws.send('{ "/registres/clavier1/quinte/2": ' + c1quinte2.checked + '}');
-              console.log('{ "/registres/clavier1/quinte/2": ' + c1quinte2.checked + '}');
+	  c1quinte223.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/quinte/223": ' + c1quinte223.checked + '}');
+              console.log('{ "/registres/clavier1/quinte/223": ' + c1quinte223.checked + '}');
       };
 	  pdbourdon16.oninput = function(ev) {
               ws.send('{ "/registres/pedale/bourdon/16": ' + pdbourdon16.checked + '}');
@@ -155,12 +169,12 @@
  <tr><td>Bourdon 16'</td><td><input id="c2bourdon16" type="checkbox"/></td>
  <td>Bourdon 8'</td><td><input id="c2bourdon8" type="checkbox"/></td>
  <td>Flute 4'</td><td><input id="c2flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="c2quinte2" type="checkbox"/></td>
+ <td>Quinte 2' 2/3</td><td><input id="c2quinte22323" type="checkbox"/></td>
  <td>Flute 2'</td><td><input id="c2flute2" type="checkbox"/></td></tr>
  <tr><td>Bourdon 16'</td><td><input id="c1bourdon16" type="checkbox"/></td>
  <td>Bourdon 8'</td><td><input id="c1bourdon8" type="checkbox"/></td>
  <td>Flute 4'</td><td><input id="c1flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="c1quinte2" type="checkbox"/></td>
+ <td>Quinte 2' 2/3</td><td><input id="c1quinte223" type="checkbox"/></td>
  <td>Flute 2'</td><td><input id="c1flute2" type="checkbox"/></td></tr>
  <tr><td>Bourdon 16'</td><td><input id="pdbourdon16" type="checkbox"/></td>
  <td>Bourdon 8'</td><td><input id="pdbourdon8" type="checkbox"/></td>
