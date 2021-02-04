@@ -32,9 +32,11 @@
     var pdbourdon8 = document.getElementById('pdbourdon8');
     var pdflute4 = document.getElementById('pdflute4');
     
+    // exemple pour valeur continue
     var modgain = document.getElementById('modgain');
 
-      ws.onmessage = function(mess) {
+    // récupération des messages depuis pd
+    ws.onmessage = function(mess) {
           console.log(mess.data);
           if (mess.data instanceof Blob) {
                 mess.data.arrayBuffer().then(buffer => {
@@ -43,95 +45,27 @@
                     console.log(packet.address); // the address
                     console.log(packet.args[0]); // the value
 		    if (packet.address == "/registres/clavier2/bourdon/16")  c2bourdon16.checked = packet.args[0];
+		    else if (packet.address == "/registres/clavier2/bourdon/8") c2bourdon8.checked = packet.args[0];
+		    // reproduire cet exemple (avec else if) pour tous les suivants
+		    /*
+		    var c2quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier2/quinte/223"; });
+		    var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
+		    var c2flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/4"; });
+		    var c1bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/16"; });
+		    var c1bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/8"; });
+		    var c1quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier1/quinte/223"; });
+		    var c1flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/2"; });
+		    var c1flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/4"; });
+		    var pdbourdon16_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/16"; });
+		    var pdbourdon8_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/8"; });
+		    var pdflute4_k = keys.findIndex(function(val) { return val == "/registres/pedale/flute/4"; });
+		    */
                 });
             }
-            else {
-	    var json = JSON.parse(mess.data);
-	    var keys = Object.keys(json);
-
-	    var c2bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier2/bourdon/16"; });
-	    var c2bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier2/bourdon/8"; });
-	    var c2quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier2/quinte/223"; });
-	    var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
-	    var c2flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/4"; });
-	    var c1bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/16"; });
-	    var c1bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/8"; });
-	    var c1quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier1/quinte/223"; });
-	    var c1flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/2"; });
-	    var c1flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/4"; });
-	    var pdbourdon16_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/16"; });
-	    var pdbourdon8_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/8"; });
-	    var pdflute4_k = keys.findIndex(function(val) { return val == "/registres/pedale/flute/4"; });
-
-	    var modgain_k = keys.findIndex(function(val) { return val == "/modgain"; });
-
-
-	    if(modgain_k != -1)
-	    {
-		modgain.value = json["/modgain"];
-	    }
-	    if(c2bourdon16_k != -1)
-	    {
-		c2bourdon16.checked = json["/registres/clavier2/bourdon/16"];
-	    }
-			if(c2bourdon8_k != -1)
-		{
-		    c2bourdon8.checked = json["/registres/clavier2/bourdon/8"];
-		}
-			if(c2flute4_k != -1)
-		{
-		    c2flute4.checked = json["/registres/clavier2/flute/4"];
-		}
-			if(c2quinte223_k != -1)
-		{
-		    c2quinte223.checked = json["/registres/clavier2/quinte/223"];
-		}
-			if(c2flute2_k != -1)
-		{
-		    c2flute2.checked = json["/registres/clavier2/flute/2"];
-		}
-			if(c1bourdon16_k != -1)
-		{
-		    c1bourdon16.checked = json["/registres/clavier1/bourdon/16"];
-		}
-			if(c1bourdon8_k != -1)
-		{
-		    c1bourdon8.checked = json["/registres/clavier1/bourdon/8"];
-		}
-			if(c1flute4_k != -1)
-		{
-		    c2flute4.checked = json["/registres/clavier1/flute/4"];
-		}
-			if(c1quinte223_k != -1)
-		{
-		    c1quinte223.checked = json["/registres/clavier1/quinte/223"];
-		}
-			if(c1flute2_k != -1)
-		{
-		    c1flute2.checked = json["/registres/clavier1/flute/2"];
-		}
-			if(pdbourdon16_k != -1)
-		{
-		    pdbourdon16.checked = json["/registres/pedale/bourdon/16"];
-		}
-			if(pdbourdon8_k != -1)
-		{
-		    c2bourdon8.checked = json["/registres/pedale/bourdon/8"];
-		}
-			if(pdflute4_k != -1)
-		{
-		    pdflute4.checked = json["/registres/pedale/flute/4"];
-		}
-		      
-      
-	}
+            
       }
 
-      modgain.oninput = function(ev) {
-              ws.send('{ "/modgain": ' + modgain.value + '}');
-              console.log('{ "/modgain": ' + modgain.value + '}');
-      };
-
+      // envoi des valeurs vers pd
       c2bourdon16.oninput = function(ev) {
               ws.send('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
               console.log('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
@@ -183,6 +117,12 @@
 	  pdflute4.oninput = function(ev) {
               ws.send('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
               console.log('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
+      };
+      
+      // exemple pour valeur continue
+	  modgain.oninput = function(ev) {
+              ws.send('{ "/modgain": ' + modgain.value + '}');
+              console.log('{ "/modgain": ' + modgain.value + '}');
       };
 	
     }
