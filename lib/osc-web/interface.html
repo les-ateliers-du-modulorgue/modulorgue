@@ -5,9 +5,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="osc-view.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
-    <script src="/node_modules/osc/dist/osc-browser.js"></script>
-    <script src="/node_modules/flocking/dist/flocking-all.min.js"></script>
-    <script src="/socket-synth.js"></script>
+    <script src="node_modules/osc/dist/osc-browser.js"></script>
+    <script src="node_modules/flocking/dist/flocking-all.min.js"></script>
 </head>
 <script>
     function init() {
@@ -46,21 +45,18 @@
                     console.log(packet.args[0]); // the value
 		    if (packet.address == "/registres/clavier2/bourdon/16")  c2bourdon16.checked = packet.args[0];
 		    else if (packet.address == "/registres/clavier2/bourdon/8") c2bourdon8.checked = packet.args[0];
-		    // reproduire cet exemple (avec else if) pour tous les suivants
-		    /*
-		    var c2quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier2/quinte/223"; });
-		    var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
-		    var c2flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/4"; });
-		    var c1bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/16"; });
-		    var c1bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/8"; });
-		    var c1quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier1/quinte/223"; });
-		    var c1flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/2"; });
-		    var c1flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/4"; });
-		    var pdbourdon16_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/16"; });
-		    var pdbourdon8_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/8"; });
-		    var pdflute4_k = keys.findIndex(function(val) { return val == "/registres/pedale/flute/4"; });
-		    */
-                });
+			else if (packet.address == "/registres/clavier2/flute/4") c2flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/quinte/223") c2quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/flute/2") c2flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/16") c1bourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/8") c1bourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/4") c1flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/quinte/223") c1quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/2") c1flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/16") pdbourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/8") pdbourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/flute/4") pdflute4.checked = packet.args[0];
+			      });
             }
             
       }
@@ -120,11 +116,12 @@
       };
       
       // exemple pour valeur continue
+	  /*
 	  modgain.oninput = function(ev) {
               ws.send('{ "/modgain": ' + modgain.value + '}');
               console.log('{ "/modgain": ' + modgain.value + '}');
       };
-	
+	  */
     }
 </script>
 
@@ -134,7 +131,6 @@
 			 background-size: 1280px 720px;">
 <body onload="init()">
 <table>
-
     
 <div class="registres">
  <span style="position: fixed; top: 450px; left: 655px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">Bourdon<br>16'</label></span>
