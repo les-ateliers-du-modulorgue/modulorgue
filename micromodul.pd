@@ -1,83 +1,15 @@
-#N canvas 435 105 605 662 12;
-#X obj 123 32 tgl 100 0 2b8 2b8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 348 32 tgl 100 0 2b223 2b223s QUINTE_2'_2/3 6 -8 1 13 -72168
--66577 -66577 0 1;
-#X obj 460 32 tgl 100 0 2b2 2b2s FLUTE_2 20 -8 1 13 -72168 -66577 -66577
-0 1;
-#X obj 12 32 tgl 100 0 2b16 2b16s BOURDON_16' 8 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 123 158 tgl 100 0 1b8 1b8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 235 158 tgl 100 0 1b4 1b4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 348 158 tgl 100 0 1b223 1b223s QUINTE_2'_2/3 6 -8 1 13 -72168
--66577 -66577 0 1;
-#X obj 460 158 tgl 100 0 1b2 1b2s FLUTE_2 20 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 12 157 tgl 100 0 1b16 1b16s BOURDON_16' 8 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 123 287 tgl 100 0 pb8 pb8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 235 287 tgl 100 0 pb4 pb4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
--66577 0 1;
-#X obj 230 566 ossia.device modulorgue;
-#N canvas 863 653 842 471 registres 0;
-#X obj 74 183 ctlin 40 11;
-#X obj 74 208 > 0;
-#X floatatom 75 259 5 0 0 0 - - -;
-#X obj 73 282 ctlout 40 11;
-#X obj 472 321 ctlin 42 11;
-#X obj 485 412 ctlout 42 11;
-#X floatatom 496 365 5 0 0 0 - - -;
-#X obj 74 231 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 30 98 565 215 12;
+#X obj 212 166 ossia.device modulorgue;
+#N canvas 8 407 706 216 registres 1;
+#X obj 590 118 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 318 224 > 0;
-#X floatatom 317 270 5 0 0 0 - - -;
-#X obj 318 247 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 320 182 ctlin 41 11;
-#X obj 317 291 ctlout 41 11;
-#X floatatom 74 391 5 0 0 0 - - -;
-#X obj 74 331 ctlin 43 11;
-#X obj 74 418 ctlout 43 11;
-#X floatatom 316 397 5 0 0 0 - - -;
-#X obj 316 346 ctlin 44 11;
-#X obj 315 420 ctlout 44 11;
-#X obj 227 184 loadbang;
-#X obj 227 204 delay 10;
-#X obj 192 179 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 116 260 sel 0;
-#X msg 115 306 127;
-#X obj 370 267 sel 0;
-#X msg 362 317 127;
-#X obj 84 365 sel 1;
-#X obj 329 371 sel 1;
-#X obj 470 265 > 0;
-#X obj 473 241 ctlin 45 11;
-#X obj 428 295 sel 0;
-#X msg 425 326 0;
-#X obj 469 295 sel 1;
-#X obj 684 250 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 657 200 pack;
-#X obj 657 273 sons;
-#X obj 755 223 r sons;
-#X obj 657 177 notein 2;
-#X msg 657 224 note 1 \$1 \$2;
-#X obj 403 375 spigot;
-#X floatatom 443 421 5 0 0 0 - - -;
-#X floatatom 576 376 5 0 0 0 - - -;
-#X obj 585 348 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 542 286 delay 50;
+#X obj 563 68 pack;
+#X obj 563 141 sons;
+#X obj 661 91 r sons;
+#X obj 563 45 notein 2;
+#X msg 563 92 note 1 \$1 \$2;
 #X obj 63 44 ossia.model registres;
-#N canvas 727 7 697 231 rang1 0;
+#N canvas 2 303 697 231 rang1 0;
 #X obj 366 135 ctlout 22 15;
 #X obj 464 134 ctlout 23 15;
 #X obj 580 131 ctlout 24 15;
@@ -97,6 +29,8 @@
 #X obj 148 77 ossia.param bourdon/16 @type bool, f 12;
 #X obj 148 135 ctlout 20 15;
 #X obj 13 25 ossia.model clavier2;
+#X obj 314 202 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X connect 3 0 9 0;
 #X connect 3 0 10 0;
 #X connect 4 0 3 0;
@@ -112,13 +46,12 @@
 #X connect 15 0 9 1;
 #X connect 16 0 10 1;
 #X connect 16 0 17 0;
+#X connect 16 0 19 0;
 #X restore 70 100 pd rang1;
 #X obj 246 51 loadbang;
 #X msg 387 36 \; pd dsp 1;
 #X obj 315 50 delay 200;
-#X obj 483 32 ctlin 0 10;
-#X floatatom 483 57 5 0 0 0 - - -;
-#N canvas 727 261 703 176 rang2 0;
+#N canvas 32 62 801 176 rang2 0;
 #X obj 175 107 ctlout 10 15;
 #X obj 389 99 ctlout 12 15;
 #X obj 487 97 ctlout 13 15;
@@ -154,7 +87,7 @@
 #X connect 17 0 0 0;
 #X connect 17 0 12 1;
 #X restore 237 100 pd rang2;
-#N canvas 759 465 533 165 rang3 0;
+#N canvas 49 268 690 239 rang3 0;
 #X msg 31 89 note 3 \$1 \$2;
 #X obj 186 99 ctlout 1 15;
 #X obj 304 97 ctlout 2 15;
@@ -184,207 +117,147 @@
 #X connect 13 0 1 0;
 #X connect 13 0 10 1;
 #X restore 417 104 pd rang3;
+#N canvas 84 98 1026 539 nfonctions 0;
+#X obj 217 100 ctlin 40 11;
+#X obj 217 125 > 0;
+#X floatatom 218 176 5 0 0 0 - - -;
+#X obj 216 199 ctlout 40 11;
+#X obj 815 241 ctlin 42 11;
+#X obj 842 365 ctlout 42 11;
+#X obj 217 152 tgl 15 0 activtranspo1 activtranspo1s empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 430 126 > 0;
+#X obj 507 190 ctlout 41 11;
+#X obj 217 248 ctlin 43 11;
+#X obj 217 335 ctlout 43 11;
+#X obj 462 239 ctlin 44 11;
+#X obj 530 397 ctlout 44 11;
+#X obj 352 -4 loadbang;
+#X obj 352 24 delay 10;
+#X obj 259 177 sel 0;
+#X msg 258 223 127;
+#X obj 560 166 sel 0;
+#X msg 552 216 127;
+#X obj 227 282 sel 1;
+#X obj 519 270 sel 1;
+#X obj 813 130 > 0;
+#X obj 813 102 ctlin 45 11;
+#X obj 771 215 sel 0;
+#X msg 768 246 0;
+#X obj 828 215 sel 1;
+#X obj 761 324 spigot;
+#X floatatom 783 376 5 0 0 0 - - -;
+#X obj 907 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 952 211 delay 50;
+#X obj 813 158 tgl 15 0 activattac activattacs empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 842 155 activation attaque;
+#X text 880 287 valeur attaque;
+#X text 523 146 activation transpo2;
+#X text 258 309 valeur transpo1;
+#X text 240 146 activation transpo1;
+#X text 548 297 valeur transpo2;
+#X obj 704 65 ossia.param activation/attaque @type bool;
+#X obj 3 67 ossia.param activation/transpo1 @type bool;
+#X obj 30 369 ossia.param valeur/transpo1 @type float;
+#X obj 723 405 ossia.param valeur/attaque @type float;
+#X floatatom 209 309 5 0 36 0 - - -;
+#X floatatom 838 287 5 10 127 0 - - -;
+#X obj 13 25 ossia.model nfonctionscl2;
+#X obj 372 67 ossia.param transpo.2/activation @type bool;
+#X obj 512 15 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 408 221 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 411 306 5 0 36 0 - - -;
+#X obj 499 336 int;
+#X obj 402 426 ossia.param transpo.2/valeur @type int @range 0 127
+@unit midinote @description "la valeur de transposition pour le clavier
+2", f 38;
 #X connect 0 0 1 0;
-#X connect 1 0 7 0;
+#X connect 1 0 6 0;
 #X connect 2 0 3 0;
-#X connect 2 0 22 0;
-#X connect 4 0 6 0;
-#X connect 4 0 39 0;
-#X connect 6 0 39 0;
-#X connect 7 0 26 0;
-#X connect 7 0 2 0;
-#X connect 8 0 10 0;
-#X connect 9 0 12 0;
-#X connect 9 0 24 0;
-#X connect 10 0 27 0;
-#X connect 10 0 9 0;
-#X connect 11 0 8 0;
-#X connect 13 0 15 0;
-#X connect 14 0 13 0;
-#X connect 16 0 18 0;
-#X connect 17 0 16 0;
-#X connect 19 0 20 0;
-#X connect 20 0 23 0;
-#X connect 20 0 25 0;
-#X connect 21 0 20 0;
-#X connect 21 0 31 0;
-#X connect 22 0 23 0;
-#X connect 23 0 15 0;
-#X connect 24 0 25 0;
-#X connect 25 0 18 0;
-#X connect 26 0 13 0;
-#X connect 27 0 16 0;
-#X connect 28 0 30 0;
-#X connect 28 0 32 0;
-#X connect 28 0 39 1;
-#X connect 29 0 28 0;
-#X connect 30 0 31 0;
-#X connect 31 0 5 0;
-#X connect 31 0 39 1;
-#X connect 32 0 42 0;
-#X connect 33 0 35 1;
-#X connect 34 0 38 0;
-#X connect 36 0 33 0;
-#X connect 37 0 34 0;
-#X connect 37 1 34 1;
-#X connect 38 0 35 0;
-#X connect 39 0 40 0;
-#X connect 39 0 5 0;
-#X connect 42 0 43 0;
-#X connect 43 0 6 0;
-#X connect 46 0 48 0;
-#X connect 48 0 47 0;
-#X connect 49 0 50 0;
-#X restore 26 466 pd registres;
-#X obj 228 508 loadbang;
-#X msg 231 539 expose oscquery;
-#N canvas 95 129 852 561 interfaces 0;
-#X obj 591 328 ossia.view registres;
-#X obj 403 213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 400 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 252 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 249 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 107 212 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 104 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 681 20 r 2b2;
-#X obj 682 92 s 2b2s;
-#X obj 540 23 r 2b223;
-#X obj 541 92 s 2b223s;
-#X obj 422 22 r 2b4;
-#X obj 423 101 s 2b4s;
-#X obj 395 103 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 392 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 244 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 241 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 99 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 96 20 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 271 21 r 2b8;
-#X obj 126 21 r 2b16;
-#X obj 126 101 s 2b16s;
-#X obj 272 100 s 2b8s;
-#X obj 410 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 407 271 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 259 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 256 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 114 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 111 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 134 131 r 1b16;
-#X obj 141 300 ossia.remote pedale/bourdon/16, f 19;
-#X obj 286 300 ossia.remote pedale/bourdon/8, f 18;
-#X obj 437 301 ossia.remote pedale/flute/4, f 17;
-#X obj 134 160 ossia.remote clavier1/bourdon/16, f 16;
-#X obj 278 160 ossia.remote clavier1/bourdon/8, f 15;
-#X obj 430 161 ossia.remote clavier1/flute/4, f 15;
-#X obj 549 158 ossia.remote clavier1/quinte/223, f 17;
-#X obj 689 158 ossia.remote clavier1/flute/2, f 16;
-#X obj 126 50 ossia.remote clavier2/bourdon/16, f 16;
-#X obj 271 50 ossia.remote clavier2/bourdon/8, f 15;
-#X obj 422 51 ossia.remote clavier2/flute/4, f 15;
-#X obj 541 48 ossia.remote clavier2/quinte/223, f 17;
-#X obj 681 48 ossia.remote clavier2/flute/2, f 16;
-#X obj 279 131 r 1b8;
-#X obj 430 132 r 1b4;
-#X obj 548 133 r 1b223;
-#X obj 689 130 r 1b2;
-#X obj 141 271 r pb16;
-#X obj 286 271 r pb8;
-#X obj 437 272 r pb4;
-#X obj 142 350 s pb16s;
-#X obj 287 350 s pb8s;
-#X obj 438 351 s pb4s;
-#X obj 135 210 s 1b16s;
-#X obj 280 210 s 1b8s;
-#X obj 431 211 s 1b4s;
-#X obj 551 214 s 1b223s;
-#X obj 690 202 s 1b2s;
-#X connect 2 0 35 0;
-#X connect 4 0 34 0;
-#X connect 6 0 33 0;
-#X connect 7 0 42 0;
+#X connect 2 0 15 0;
+#X connect 4 0 26 0;
+#X connect 4 0 42 0;
+#X connect 6 0 19 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 7 0 17 0;
+#X connect 7 0 20 0;
+#X connect 7 0 46 0;
 #X connect 9 0 41 0;
-#X connect 11 0 40 0;
-#X connect 14 0 40 0;
-#X connect 16 0 39 0;
-#X connect 18 0 38 0;
-#X connect 19 0 39 0;
-#X connect 20 0 38 0;
-#X connect 24 0 32 0;
-#X connect 26 0 31 0;
-#X connect 28 0 30 0;
-#X connect 29 0 33 0;
-#X connect 30 0 27 0;
-#X connect 30 0 50 0;
-#X connect 31 0 25 0;
-#X connect 31 0 51 0;
-#X connect 32 0 23 0;
-#X connect 32 0 52 0;
-#X connect 33 0 5 0;
-#X connect 33 0 53 0;
-#X connect 34 0 3 0;
-#X connect 34 0 54 0;
-#X connect 35 0 1 0;
-#X connect 35 0 55 0;
-#X connect 36 0 56 0;
-#X connect 37 0 57 0;
-#X connect 38 0 17 0;
-#X connect 38 0 21 0;
-#X connect 39 0 15 0;
-#X connect 39 0 22 0;
-#X connect 40 0 12 0;
-#X connect 40 0 13 0;
-#X connect 41 0 10 0;
-#X connect 42 0 8 0;
-#X connect 43 0 34 0;
-#X connect 44 0 35 0;
-#X connect 45 0 36 0;
-#X connect 46 0 37 0;
-#X connect 47 0 30 0;
-#X connect 48 0 31 0;
-#X connect 49 0 32 0;
-#X restore 33 497 pd interfaces;
-#X msg 419 529 namespace;
-#X msg 50 424 save mem1;
-#X msg 141 428 save mem2;
-#X msg 242 431 load mem1;
-#X msg 323 434 load mem2;
-#X obj 227 623 print;
-#X obj 155 480 list prepend preset;
-#X obj 149 510 list trim;
-#N canvas 1116 131 450 300 nfonctions 0;
-#X restore 37 559 pd nfonctions;
-#X obj 463 430 ggee/shell;
-#X msg 416 346 ls /media/pi;
-#X obj 467 466 print;
-#X msg 360 373 ls /media/pi/BALT, f 25;
-#X connect 13 0 23 0;
+#X connect 11 0 48 0;
+#X connect 13 0 14 0;
+#X connect 14 0 16 0;
+#X connect 14 0 18 0;
+#X connect 14 0 24 0;
 #X connect 15 0 16 0;
-#X connect 16 0 13 0;
-#X connect 18 0 13 0;
-#X connect 19 0 24 0;
-#X connect 20 0 24 0;
-#X connect 21 0 24 0;
-#X connect 22 0 24 0;
-#X connect 24 0 25 0;
-#X connect 25 0 13 0;
-#X connect 27 0 29 0;
-#X connect 27 1 29 0;
-#X connect 28 0 27 0;
-#X connect 30 0 27 0;
+#X connect 16 0 10 0;
+#X connect 17 0 18 0;
+#X connect 18 0 12 0;
+#X connect 19 0 41 0;
+#X connect 20 0 48 0;
+#X connect 21 0 30 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 24 0 5 0;
+#X connect 24 0 26 1;
+#X connect 25 0 28 0;
+#X connect 26 0 27 0;
+#X connect 26 0 5 0;
+#X connect 28 0 29 0;
+#X connect 29 0 42 0;
+#X connect 30 0 23 0;
+#X connect 30 0 25 0;
+#X connect 30 0 26 1;
+#X connect 37 0 30 0;
+#X connect 38 0 6 0;
+#X connect 39 0 41 0;
+#X connect 40 0 42 0;
+#X connect 41 0 10 0;
+#X connect 42 0 26 0;
+#X connect 44 0 7 0;
+#X connect 45 0 44 0;
+#X connect 47 0 49 0;
+#X connect 48 0 12 0;
+#X connect 49 0 48 0;
+#X restore 73 167 pd nfonctions;
+#X connect 0 0 2 1;
+#X connect 1 0 5 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 4 1 1 1;
+#X connect 5 0 2 0;
+#X connect 8 0 10 0;
+#X connect 10 0 9 0;
+#X restore 14 151 pd registres;
+#X obj 210 108 loadbang;
+#X msg 215 139 expose oscquery;
+#X msg 307 95 namespace;
+#X msg 32 24 save mem1;
+#X msg 123 28 save mem2;
+#X msg 224 31 load mem1;
+#X msg 305 34 load mem2;
+#X obj 212 190 print;
+#X obj 137 80 list prepend preset;
+#X obj 131 110 list trim;
+#X obj 428 90 ggee/shell;
+#X msg 419 40 ls /media/pi;
+#X obj 432 126 print;
+#X msg 363 67 ls /media/pi/BALT, f 25;
+#X connect 0 0 9 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 10 0;
+#X connect 6 0 10 0;
+#X connect 7 0 10 0;
+#X connect 8 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 0 0;
+#X connect 12 0 14 0;
+#X connect 12 1 14 0;
+#X connect 13 0 12 0;
+#X connect 15 0 12 0;
