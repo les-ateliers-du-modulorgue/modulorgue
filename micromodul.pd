@@ -1,4 +1,4 @@
-#N canvas 58 22 279 171 12;
+#N canvas 506 128 279 125 12;
 #X obj 24 69 ossia.device modulorgue;
 #X obj 138 15 loadbang, f 9;
 #X msg 138 43 expose oscquery;
@@ -240,14 +240,14 @@ ms @description "duree attaque pour les transpos actives du clavier2"
 #X connect 18 0 17 0;
 #X connect 18 0 19 0;
 #X restore 24 16 pd registres;
-#N canvas 58 225 616 617 combinateur 1;
+#N canvas 123 98 642 576 combinateur 0;
 #X obj 32 478 outlet;
 #X obj 36 419 list prepend preset;
 #X obj 36 443 list trim;
 #X msg 96 484 namespace;
 #X msg 407 128 Mac;
 #X msg 454 129 rPi;
-#X obj 407 78 loadbang;
+#X obj 416 90 loadbang;
 #N canvas 756 212 284 260 OS 0;
 #X obj 21 19 inlet;
 #X obj 21 56 symbol;
@@ -270,8 +270,8 @@ ms @description "duree attaque pour les transpos actives du clavier2"
 #X obj 99 160 + 64;
 #X obj 28 236 pack 1 s 1, f 21;
 #X obj 28 263 list prepend, f 47;
-#X msg 10 341 save /Users/bltzr/dev/combinateurs/2/A/0.json;
-#X msg 237 364 load /Users/bltzr/dev/combinateurs/2/A/0.json;
+#X msg 10 341 save /home/pi/dev/combinateurs/2/B/45.json;
+#X msg 237 364 load /home/pi/dev/combinateurs/2/B/45.json;
 #X obj 14 60 t b b, f 6;
 #X obj 241 64 t b b, f 6;
 #X msg 28 296 set save \$1/\$2/\$3/\$4.json;
@@ -279,15 +279,15 @@ ms @description "duree attaque pour les transpos actives du clavier2"
 #X obj 14 16 ossia.param sauver @type impulse, f 18;
 #X obj 241 14 ossia.param charger @type impulse, f 19;
 #X obj 463 17 ossia.model combinateur, f 11;
-#X text 36 371;
-#X msg 240 494 save /Users/bltzr/dev/combinateurs/0.json;
+#X text 36 371 comment;
+#X msg 240 494 save /home/pi/dev/combinateurs/0.json;
 #X msg 409 332 set save \$1/0.json;
 #X text 327 457 pour mettre à jour la mémoire de remise à 0 (reset)
 :, f 29;
 #X obj 441 216 ossia.param reset @type impulse, f 17;
 #X msg 433 302 set load \$1/0.json;
-#X msg 242 397 load /Users/bltzr/dev/combinateurs/0.json;
-#X text 425 96 connecter en fonction de l'OS, f 16;
+#X msg 242 397 load /home/pi/dev/combinateurs/0.json;
+#X text 477 92 connecter en fonction de l'OS, f 16;
 #X obj 172 171 ossia.param combinaison @type int @range 0 9 @recall_safe
 , f 23;
 #X obj 34 127 ossia.param serie @type int @range 1 9 @recall_safe;
@@ -303,7 +303,7 @@ fichier après sauvegarde;
 #X connect 3 0 0 0;
 #X connect 4 0 7 0;
 #X connect 5 0 7 0;
-#X connect 6 0 4 0;
+#X connect 6 0 5 0;
 #X connect 7 0 11 1;
 #X connect 7 0 23 0;
 #X connect 7 0 26 0;
