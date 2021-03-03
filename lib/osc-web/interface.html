@@ -2,12 +2,11 @@
 <head>
   <title>Modulorgue</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="osc-view.css">
-    </link>
+    <link rel="stylesheet" type="text/css" media="all" href="osc-view.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
-    <script src="/node_modules/osc/dist/osc-browser.js"></script>
-    <script src="/node_modules/flocking/dist/flocking-all.min.js"></script>
-    <script src="/socket-synth.js"></script>
+    <script src="node_modules/osc/dist/osc-browser.js"></script>
+    <script src="node_modules/flocking/dist/flocking-all.min.js"></script>
 </head>
 <script>
     function init() {
@@ -46,21 +45,18 @@
                     console.log(packet.args[0]); // the value
 		    if (packet.address == "/registres/clavier2/bourdon/16")  c2bourdon16.checked = packet.args[0];
 		    else if (packet.address == "/registres/clavier2/bourdon/8") c2bourdon8.checked = packet.args[0];
-		    // reproduire cet exemple (avec else if) pour tous les suivants
-		    /*
-		    var c2quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier2/quinte/223"; });
-		    var c2flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/2"; });
-		    var c2flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier2/flute/4"; });
-		    var c1bourdon16_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/16"; });
-		    var c1bourdon8_k = keys.findIndex(function(val) { return val == "/registres/clavier1/bourdon/8"; });
-		    var c1quinte223_k = keys.findIndex(function(val) { return val == "/registres/clavier1/quinte/223"; });
-		    var c1flute2_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/2"; });
-		    var c1flute4_k = keys.findIndex(function(val) { return val == "/registres/clavier1/flute/4"; });
-		    var pdbourdon16_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/16"; });
-		    var pdbourdon8_k = keys.findIndex(function(val) { return val == "/registres/pedale/bourdon/8"; });
-		    var pdflute4_k = keys.findIndex(function(val) { return val == "/registres/pedale/flute/4"; });
-		    */
-                });
+			else if (packet.address == "/registres/clavier2/flute/4") c2flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/quinte/223") c2quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/flute/2") c2flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/16") c1bourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/8") c1bourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/4") c1flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/quinte/223") c1quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/2") c1flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/16") pdbourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/8") pdbourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/flute/4") pdflute4.checked = packet.args[0];
+			      });
             }
             
       }
@@ -120,32 +116,38 @@
       };
       
       // exemple pour valeur continue
+	  /*
 	  modgain.oninput = function(ev) {
               ws.send('{ "/modgain": ' + modgain.value + '}');
               console.log('{ "/modgain": ' + modgain.value + '}');
       };
-	
+	  */
     }
 </script>
 
-<body style="background-color:#E1E1E1;">
+<body style="background-image: url('fond.png');
+             background-repeat: no-repeat;
+			 background-attachment: fixed;
+			 background-size: 1280px 720px;">
 <body onload="init()">
 <table>
- <tr><td>Bourdon 16'</td><td><input id="c2bourdon16" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="c2bourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="c2flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="c2quinte223" type="checkbox"/></td>
- <td>Flute 2'</td><td><input id="c2flute2" type="checkbox"/></td></tr>
- <tr><td>Bourdon 16'</td><td><input id="c1bourdon16" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="c1bourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="c1flute4" type="checkbox"/></td>
- <td>Quinte 2' 2/3</td><td><input id="c1quinte223" type="checkbox"/></td>
- <td>Flute 2'</td><td><input id="c1flute2" type="checkbox"/></td></tr>
- <tr><td>Bourdon 16'</td><td><input id="pdbourdon16" type="checkbox"/></td>
- <td>Bourdon 8'</td><td><input id="pdbourdon8" type="checkbox"/></td>
- <td>Flute 4'</td><td><input id="pdflute4" type="checkbox"/></td></tr>
-
- <tr><td>Mod. gain</td><td><input id="modgain" type="range" min="-40" max="6"/></td></tr>
+    
+<div class="registres">
+ <span style="position: fixed; top: 450px; left: 655px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">Bourdon<br>16'</label></span>
+ <span style="position: fixed; top: 450px; left: 780px;"><input id="c2bourdon8" type="checkbox"/><label for="c2bourdon8">Bourdon<br>8'</label></span>
+ <span style="position: fixed; top: 450px; left: 905px;"><input id="c2flute4" type="checkbox"/><label for="c2flute4">Flûte<br>4'</label></span>
+ <span style="position: fixed; top: 450px; left: 1030px;"><input id="c2quinte223" type="checkbox"/><label for="c2quinte223">Quinte<br>2' &#8532;</label></span>
+ <span style="position: fixed; top: 450px; left: 1155px;"><input id="c2flute2" type="checkbox"/><label for="c2flute2">Flûte<br>2'</label></span>
+ <span style="position: fixed; top: 540px; left: 655px;"><input id="c1bourdon16" type="checkbox"/><label for="c1bourdon16">Bourdon<br>16'</label></span>
+ <span style="position: fixed; top: 540px; left: 780px;"><input id="c1bourdon8" type="checkbox"/><label for="c1bourdon8">Bourdon<br>8'</label></span>
+ <span style="position: fixed; top: 540px; left: 905px;"><input id="c1flute4" type="checkbox"/><label for="c1flute4">Flûte<br>4'</label></span>
+ <span style="position: fixed; top: 540px; left: 1030px;"><input id="c1quinte223" type="checkbox"/><label for="c1quinte223">Quinte<br>2' &#8532;</label></span>
+ <span style="position: fixed; top: 540px; left: 1155px;"><input id="c1flute2" type="checkbox"/><label for="c1flute2">Flûte<br>2'</label></span>
+ <span style="position: fixed; top: 630px; left: 655px;"><input id="pdbourdon16" type="checkbox"/><label for="pdbourdon16">Bourdon<br>16'</label></span>
+ <span style="position: fixed; top: 630px; left: 780px;"><input id="pdbourdon8" type="checkbox"/><label for="pdbourdon8">Bourdon<br>8'</label></span>
+ <span style="position: fixed; top: 630px; left: 905px;"><input id="pdflute4" type="checkbox"/><label for="pdflute4">Flûte<br>4'</label></span>
+ </div>
+ 
 </table>
 </body>
 </body>
