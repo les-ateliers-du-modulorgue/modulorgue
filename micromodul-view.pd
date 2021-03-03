@@ -1,6 +1,6 @@
-#N canvas 357 290 579 398 10;
+#N canvas 680 293 579 398 10;
 #X obj 123 32 tgl 100 0 2b8 2b8s BOURDON_8' 11 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 348 32 tgl 100 0 2b223 2b223s QUINTE_2'_2/3 6 -8 1 13 -72168
@@ -12,7 +12,7 @@
 #X obj 123 158 tgl 100 0 1b8 1b8s BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 235 158 tgl 100 0 1b4 1b4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 348 158 tgl 100 0 1b223 1b223s QUINTE_2'_2/3 6 -8 1 13 -72168
 -66577 -66577 0 1;
 #X obj 460 158 tgl 100 0 1b2 1b2s FLUTE_2 20 -8 1 13 -72168 -66577
@@ -22,30 +22,30 @@
 #X obj 123 287 tgl 100 0 pb8 pb8s BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 235 287 tgl 100 0 pb4 pb4s FLUTE_4' 21 -8 1 13 -72168 -66577
--66577 1 1;
+-66577 0 1;
 #X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 348 368 ossia.client modulorgue;
 #X msg 348 342 connect oscquery;
 #X obj 348 285 loadbang;
 #X obj 348 313 delay 10;
-#N canvas 959 56 362 236 interfaces_combinateurs 1;
+#N canvas 1000 128 280 210 interfaces_combinateurs 0;
 #X floatatom 27 129 5 0 0 0 - - -;
-#X obj 30 13 ossia.view combinateur;
+#X obj 24 13 ossia.view combinateur;
 #X obj 64 128 ossia.remote niveau;
-#X obj 25 81 ossia.remote sauver;
-#X obj 158 82 ossia.remote charger;
+#X obj 25 81 ossia.remote sauver, f 12;
+#X obj 110 79 ossia.remote charger, f 12;
 #X obj 25 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 158 58 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 110 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X floatatom 26 159 5 0 0 0 - - -;
 #X obj 63 158 ossia.remote serie;
 #X floatatom 26 184 5 0 0 0 - - -;
 #X obj 63 183 ossia.remote combinaison;
-#X obj 221 120 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 221 144 ossia.remote reset, f 12;
+#X obj 194 55 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 194 79 ossia.remote reset, f 12;
 #X connect 0 0 2 0;
 #X connect 2 0 0 0;
 #X connect 5 0 3 0;
@@ -58,7 +58,7 @@
 #X restore 413 312 pd interfaces_combinateurs;
 #N canvas 200 113 969 646 interfaces_registres 0;
 #X obj 661 293 ossia.view registres;
-#X obj 395 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 395 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 392 123 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -80,7 +80,7 @@
 1;
 #X obj 391 7 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 243 88 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 243 88 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 240 6 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
@@ -92,7 +92,7 @@
 #X obj 125 7 r 2b16;
 #X obj 125 93 s 2b16s;
 #X obj 272 91 s 2b8s;
-#X obj 396 316 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 396 316 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 393 234 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
