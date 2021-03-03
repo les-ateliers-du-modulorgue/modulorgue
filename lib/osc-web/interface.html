@@ -2,8 +2,8 @@
 <head>
   <title>Modulorgue</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="osc-view.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
 
     <script src="node_modules/osc/dist/osc-browser.js"></script>
     <script src="node_modules/flocking/dist/flocking-all.min.js"></script>
@@ -32,8 +32,9 @@
     var pdflute4 = document.getElementById('pdflute4');
     
     // exemple pour valeur continue
-    var modgain = document.getElementById('modgain');
-
+    var trans1val = document.getElementById('trans1val');
+    var trans2val = document.getElementById('trans2val');
+	var trans2val = document.getElementById('trans2val');
     // récupération des messages depuis pd
     ws.onmessage = function(mess) {
           console.log(mess.data);
@@ -56,6 +57,10 @@
 			else if (packet.address == "/registres/pedale/bourdon/16") pdbourdon16.checked = packet.args[0];
 			else if (packet.address == "/registres/pedale/bourdon/8") pdbourdon8.checked = packet.args[0];
 			else if (packet.address == "/registres/pedale/flute/4") pdflute4.checked = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/transpo.1/valeur") trans1val.value = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/transpo.2/valeur") trans2val.value = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/transpo.2/valeur") trans2val.value = packet.args[0];
+			//console.log('{ "/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
 			      });
             }
             
@@ -116,12 +121,22 @@
       };
       
       // exemple pour valeur continue
-	  /*
-	  modgain.oninput = function(ev) {
-              ws.send('{ "/modgain": ' + modgain.value + '}');
-              console.log('{ "/modgain": ' + modgain.value + '}');
+	  
+	  trans2val.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
       };
-	  */
+	  
+	  trans1val.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans2val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans2val.value + '}');
+      };
+	  
+	  trans2val.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+      };
+	  
     }
 </script>
 
@@ -131,8 +146,14 @@
 			 background-size: 1280px 720px;">
 <body onload="init()">
 <table>
-    
-<div class="registres">
+
+<div class='fonctionsslide'>
+ <span style="position: fixed; top: 95px; left: 662px;"><input id="trans1val" type="range" min="0" max="36" value="0"/></td></tr></span>
+ <span style="position: fixed; top: 238px; left: 662px;"><input id="trans2val" type="range" min="0" max="36" value="0"/></td></tr></span>
+ <span style="position: fixed; top: 386px; left: 662px;"><input id="trans2val" type="range" min="0" max="100" value="0"/></td></tr></span>
+ </div>
+ 
+<div class='registres'>
  <span style="position: fixed; top: 450px; left: 655px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">Bourdon<br>16'</label></span>
  <span style="position: fixed; top: 450px; left: 780px;"><input id="c2bourdon8" type="checkbox"/><label for="c2bourdon8">Bourdon<br>8'</label></span>
  <span style="position: fixed; top: 450px; left: 905px;"><input id="c2flute4" type="checkbox"/><label for="c2flute4">Flûte<br>4'</label></span>
@@ -147,8 +168,8 @@
  <span style="position: fixed; top: 630px; left: 780px;"><input id="pdbourdon8" type="checkbox"/><label for="pdbourdon8">Bourdon<br>8'</label></span>
  <span style="position: fixed; top: 630px; left: 905px;"><input id="pdflute4" type="checkbox"/><label for="pdflute4">Flûte<br>4'</label></span>
  </div>
- 
 </table>
+
 </body>
 </body>
 </html>
