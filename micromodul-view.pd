@@ -1,4 +1,4 @@
-#N canvas 839 21 583 511 10;
+#N canvas 625 111 583 511 10;
 #X obj 123 32 tgl 100 0 2b8 2b8s BOURDON_8' 11 -8 1 13 -72168 -66577
 -66577 0 1;
 #X obj 235 32 tgl 100 0 2b4 2b4s FLUTE_4' 21 -8 1 13 -72168 -66577
@@ -25,12 +25,7 @@
 -66577 0 1;
 #X obj 12 287 tgl 100 0 pb16 pb16s BOURDON_16' 8 -8 1 13 -72168 -66577
 -66577 0 1;
-#X obj 369 362 ossia.client modulorgue;
-#X msg 369 336 connect oscquery;
-#X obj 368 307 loadbang;
-#X obj 37 422 tgl 50 0 activtranspo2 activtranspo2s empty 17 7 0 10
--262144 -1 -1 0 1;
-#N canvas 0 64 969 646 interfaces_registres 0;
+#N canvas 200 113 969 646 interfaces 0;
 #X obj 661 293 ossia.view registres;
 #X obj 395 208 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -137,12 +132,12 @@
 #X floatatom 292 505 5 0 36 0 - - -;
 #X floatatom 292 530 5 0 36 0 - - -;
 #X floatatom 297 598 5 0 36 0 - - -;
-#X obj 28 379 ossia.remote nfonctionscl2/activattac;
-#X obj 29 466 ossia.remote nfonctionsclav2/activtranspo1;
-#X obj 298 379 ossia.remote nfonctionscl2/valattac;
-#X obj 340 470 ossia.remote nfonctionscl2/valtranspo1;
 #X obj 11 562 ossia.remote nfonctionscl2/transpo.2/activation;
 #X obj 337 560 ossia.remote nfonctionscl2/transpo.2/valeur;
+#X obj 29 466 ossia.remote nfonctionscl2/transpo.1/activation;
+#X obj 341 470 ossia.remote nfonctionscl2/transpo.1/valeur;
+#X obj 298 379 ossia.remote nfonctionscl2/attaque/duree;
+#X obj 12 378 ossia.remote nfonctionscl2/attaque/activation;
 #X connect 2 0 35 0;
 #X connect 4 0 34 0;
 #X connect 6 0 33 0;
@@ -187,32 +182,36 @@
 #X connect 47 0 30 0;
 #X connect 48 0 31 0;
 #X connect 49 0 32 0;
-#X connect 59 0 82 0;
-#X connect 60 0 82 0;
-#X connect 61 0 84 0;
-#X connect 65 0 83 0;
-#X connect 67 0 86 0;
-#X connect 68 0 83 0;
+#X connect 59 0 87 0;
+#X connect 60 0 87 0;
+#X connect 61 0 86 0;
+#X connect 65 0 84 0;
+#X connect 67 0 82 0;
+#X connect 68 0 84 0;
 #X connect 70 0 85 0;
-#X connect 72 0 86 0;
-#X connect 74 0 87 0;
-#X connect 76 0 84 0;
+#X connect 72 0 82 0;
+#X connect 74 0 83 0;
+#X connect 76 0 86 0;
 #X connect 78 0 85 0;
-#X connect 80 0 87 0;
-#X connect 82 0 58 0;
-#X connect 82 0 63 0;
-#X connect 83 0 64 0;
-#X connect 83 0 69 0;
-#X connect 84 0 77 0;
-#X connect 84 0 62 0;
+#X connect 80 0 83 0;
+#X connect 82 0 66 0;
+#X connect 82 0 73 0;
+#X connect 83 0 81 0;
+#X connect 83 0 75 0;
+#X connect 84 0 64 0;
+#X connect 84 0 69 0;
 #X connect 85 0 79 0;
 #X connect 85 0 71 0;
-#X connect 86 0 66 0;
-#X connect 86 0 73 0;
-#X connect 87 0 81 0;
-#X connect 87 0 75 0;
-#X restore 367 407 pd interfaces_registres;
-#N canvas 864 83 418 373 interfaces_combinateurs 1;
+#X connect 86 0 77 0;
+#X connect 86 0 62 0;
+#X connect 87 0 58 0;
+#X connect 87 0 63 0;
+#X restore 367 409 pd interfaces;
+#X obj 369 362 ossia.client modulorgue;
+#X msg 369 336 connect oscquery;
+#X obj 369 279 loadbang;
+#X obj 369 307 delay 10;
+#N canvas 540 212 418 373 interfaces_combinateurs 0;
 #X obj 36 39 ossia.view combinateurs;
 #X obj 39 112 ossia.remote supports/rafraichirListe;
 #X obj 39 89 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -229,5 +228,6 @@
 #X connect 5 0 7 0;
 #X connect 6 0 4 0;
 #X restore 368 435 pd interfaces_combinateurs;
-#X connect 14 0 13 0;
 #X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
