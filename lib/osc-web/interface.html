@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 <head>
   <title>Modulorgue</title>
@@ -186,3 +187,193 @@
 </body>
 </body>
 </html>
+=======
+<html>
+<head>
+  <title>Modulorgue</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+
+    <script src="node_modules/osc/dist/osc-browser.js"></script>
+    <script src="node_modules/flocking/dist/flocking-all.min.js"></script>
+	<script src="valeur.js"></script>
+</head>
+<script>
+    function init() {
+      var ws = new WebSocket("ws://127.0.0.1:5678/");
+      ws.onopen = function(mess) {
+          // This way the protocol will always try to send
+          // data through websockets.
+          ws.send("/?SET_PORT=0");
+          ws.send("/");
+      }
+    var c2bourdon16 = document.getElementById('c2bourdon16');
+    var c2bourdon8 = document.getElementById('c2bourdon8');
+    var c2flute4 = document.getElementById('c2flute4');
+    var c2quinte223 = document.getElementById('c2quinte223');
+    var c2flute2 = document.getElementById('c2flute2');
+    var c1bourdon16 = document.getElementById('c1bourdon16');
+    var c1bourdon8 = document.getElementById('c1bourdon8');
+    var c1flute4 = document.getElementById('c1flute4');
+    var c1quinte223 = document.getElementById('c1quinte223');
+    var c1flute2 = document.getElementById('c1flute2');
+    var pdbourdon16 = document.getElementById('pdbourdon16');
+    var pdbourdon8 = document.getElementById('pdbourdon8');
+    var pdflute4 = document.getElementById('pdflute4');
+	var transpo415 = document.getElementById('transpo415');
+    
+    // exemple pour valeur continue
+    var trans1val = document.getElementById('trans1val');
+    var trans2val = document.getElementById('trans2val');
+	var attacsval = document.getElementById('attacsval');
+    // récupération des messages depuis pd
+    ws.onmessage = function(mess) {
+          console.log(mess.data);
+          if (mess.data instanceof Blob) {
+                mess.data.arrayBuffer().then(buffer => {
+                    let packet = osc.readPacket(buffer, {});
+                    console.log(packet);
+                    console.log(packet.address); // the address
+                    console.log(packet.args[0]); // the value
+		    if (packet.address == "/registres/clavier2/bourdon/16")  c2bourdon16.checked = packet.args[0];
+		    else if (packet.address == "/registres/clavier2/bourdon/8") c2bourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/flute/4") c2flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/quinte/223") c2quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier2/flute/2") c2flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/16")  c1bourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/8") c1bourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/4") c1flute4.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/quinte/223") c1quinte223.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/flute/2") c1flute2.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/16") pdbourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/bourdon/8") pdbourdon8.checked = packet.args[0];
+			else if (packet.address == "/registres/pedale/flute/4") pdflute4.checked = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/transpo.1/valeur") trans1val.value = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/transpo.2/valeur") trans2val.value = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/attaque/duree") attacsval.value = packet.args[0];
+			else if (packet.address == "/registres/transp/transpogenerale/valeur") attacsval.value = packet.args[0];
+			//console.log('{ "/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+			      });
+            }
+            
+      }
+
+      // envoi des valeurs vers pd
+      transpo415.oninput = function(ev) {
+              ws.send('{ "/registres/transp/transpogenerale/valeur": ' + transpo415.checked + '}');
+              console.log('{ "/registres/transp/transpogenerale/valeur": ' + transpo415.checked + '}');
+      };
+	  c2bourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
+              console.log('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
+      };
+	  c2bourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/bourdon/8": ' + c2bourdon8.checked + '}');
+              console.log('{ "/registres/clavier2/bourdon/8": ' + c2bourdon8.checked + '}');
+      };
+	  c2flute4.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/flute/4": ' + c2flute4.checked + '}');
+              console.log('{ "/registres/clavier2/flute/4": ' + c2flute4.checked + '}');
+      };
+	  c2flute2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
+              console.log('{ "/registres/clavier2/flute/2": ' + c2flute2.checked + '}');
+      };
+	  c2quinte223.oninput = function(ev) {
+              ws.send('{ "/registres/clavier2/quinte/223": ' + c2quinte223.checked + '}');
+              console.log('{ "/registres/clavier2/quinte/223": ' + c2quinte223.checked + '}');
+      };
+	  c1bourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/bourdon/16": ' + c1bourdon16.checked + '}');
+              console.log('{ "/registres/clavier1/bourdon/16": ' + c1bourdon16.checked + '}');
+      };
+	  c1bourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/bourdon/8": ' + c1bourdon8.checked + '}');
+              console.log('{ "/registres/clavier1/bourdon/8": ' + c1bourdon8.checked + '}');
+      };
+	  c1flute4.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/flute/4": ' + c1flute4.checked + '}');
+              console.log('{ "/registres/clavier1/flute/4": ' + c1flute4.checked + '}');
+      };
+	  c1flute2.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
+              console.log('{ "/registres/clavier1/flute/2": ' + c1flute2.checked + '}');
+      };
+	  c1quinte223.oninput = function(ev) {
+              ws.send('{ "/registres/clavier1/quinte/223": ' + c1quinte223.checked + '}');
+              console.log('{ "/registres/clavier1/quinte/223": ' + c1quinte223.checked + '}');
+      };
+	  pdbourdon16.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/bourdon/16": ' + pdbourdon16.checked + '}');
+              console.log('{ "/registres/pedale/bourdon/16": ' + pdbourdon16.checked + '}');
+      };
+	  pdbourdon8.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/bourdon/8": ' + pdbourdon8.checked + '}');
+              console.log('{ "/registres/pedale/bourdon/8": ' + pdbourdon8.checked + '}');
+      };
+	  pdflute4.oninput = function(ev) {
+              ws.send('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
+              console.log('{ "/registres/pedale/flute/4": ' + pdflute4.checked + '}');
+      };
+      
+      // exemple pour valeur continue
+	  
+	  trans1val.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans1val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans1val.value + '}');
+      };
+	  
+	  trans2val.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+      };
+	  
+	  attacsval.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/attaque/duree": ' + attacsval.value + '}');
+              console.log('{ "/registres/nfonctionscl2/attaque/duree": ' + attacsval.value + '}');
+      };
+	  
+	  refreshdrives.oninput = function(ev) {
+              ws.send('{ "/combinateurs/supports/rafraichirListe": ' +  + '}');
+              console.log('{ "/combinateurs/supports/rafraichirListe": ' +  +'}');
+      };
+	  
+    }
+</script>
+
+<body style="background-image: url('fond.png');
+             background-repeat: no-repeat;
+			 background-attachment: fixed;
+			 background-size: 1280px 720px;">
+<body onload="init()">
+<table>
+<div class='transposition'>
+<span style="position: fixed; top: 180px; left: 25px;"><input id="transpo415" type="checkbox"/><label for="transpo415">415</label></span>
+</div>
+
+<!-- supprimer les moins des valeurs left pour ajouter les registres cachés -->
+
+<div class='registres'>
+ <span style="position: fixed; top: 75px; left: 865px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 945px;"><input id="c2bourdon8" type="checkbox"/><label for="c2bourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 1025px;"><input id="c2flute4" type="checkbox"/><label for="c2flute4">F4'</label></span>
+ <span style="position: fixed; top: 75px; left: -1105px;"><input id="c2quinte223" type="checkbox"/><label for="c2quinte223">Q2'&#8532;</label></span>
+ <span style="position: fixed; top: 75px; left: -1185px;"><input id="c2flute2" type="checkbox"/><label for="c2flute2">F2'</label></span>
+ 
+ <span style="position: fixed; top: 75px; left: 405px;"><input id="c1bourdon16" type="checkbox"/><label for="c1bourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 485px;"><input id="c1bourdon8" type="checkbox"/><label for="c1bourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 565px;"><input id="c1flute4" type="checkbox"/><label for="c1flute4">F4'</label></span>
+ <span style="position: fixed; top: 75px; left: -645px;"><input id="c1quinte223" type="checkbox"/><label for="c1quinte223">Q2'&#8532;</label></span>
+ <span style="position: fixed; top: 75px; left: -725px;"><input id="c1flute2" type="checkbox"/><label for="c1flute2">F2'</label></span>
+ 
+ <span style="position: fixed; top: 75px; left: 25px;"><input id="pdbourdon16" type="checkbox"/><label for="pdbourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 105px;"><input id="pdbourdon8" type="checkbox"/><label for="pdbourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 185px;"><input id="pdflute4" type="checkbox"/><label for="pdflute4">F4'</label></span>
+ </div>
+</table>
+
+</body>
+</body>
+</html>
+>>>>>>> bc70443173ec2f6743a6b867a6ab7311079be72f
