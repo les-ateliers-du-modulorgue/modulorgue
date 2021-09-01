@@ -7,6 +7,7 @@
 
     <script src="node_modules/osc/dist/osc-browser.js"></script>
     <script src="node_modules/flocking/dist/flocking-all.min.js"></script>
+	<script src="valeur.js"></script>
 </head>
 <script>
     function init() {
@@ -30,11 +31,12 @@
     var pdbourdon16 = document.getElementById('pdbourdon16');
     var pdbourdon8 = document.getElementById('pdbourdon8');
     var pdflute4 = document.getElementById('pdflute4');
+	var transpo415 = document.getElementById('transpo415');
     
     // exemple pour valeur continue
     var trans1val = document.getElementById('trans1val');
     var trans2val = document.getElementById('trans2val');
-	var trans2val = document.getElementById('trans2val');
+	var attacsval = document.getElementById('attacsval');
     // récupération des messages depuis pd
     ws.onmessage = function(mess) {
           console.log(mess.data);
@@ -49,7 +51,7 @@
 			else if (packet.address == "/registres/clavier2/flute/4") c2flute4.checked = packet.args[0];
 			else if (packet.address == "/registres/clavier2/quinte/223") c2quinte223.checked = packet.args[0];
 			else if (packet.address == "/registres/clavier2/flute/2") c2flute2.checked = packet.args[0];
-			else if (packet.address == "/registres/clavier1/bourdon/16") c1bourdon16.checked = packet.args[0];
+			else if (packet.address == "/registres/clavier1/bourdon/16")  c1bourdon16.checked = packet.args[0];
 			else if (packet.address == "/registres/clavier1/bourdon/8") c1bourdon8.checked = packet.args[0];
 			else if (packet.address == "/registres/clavier1/flute/4") c1flute4.checked = packet.args[0];
 			else if (packet.address == "/registres/clavier1/quinte/223") c1quinte223.checked = packet.args[0];
@@ -59,7 +61,8 @@
 			else if (packet.address == "/registres/pedale/flute/4") pdflute4.checked = packet.args[0];
 			else if (packet.address == "/registres/nfonctionscl2/transpo.1/valeur") trans1val.value = packet.args[0];
 			else if (packet.address == "/registres/nfonctionscl2/transpo.2/valeur") trans2val.value = packet.args[0];
-			else if (packet.address == "/registres/nfonctionscl2/transpo.2/valeur") trans2val.value = packet.args[0];
+			else if (packet.address == "/registres/nfonctionscl2/attaque/duree") attacsval.value = packet.args[0];
+			else if (packet.address == "/registres/transp/transpogenerale/valeur") attacsval.value = packet.args[0];
 			//console.log('{ "/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
 			      });
             }
@@ -67,7 +70,11 @@
       }
 
       // envoi des valeurs vers pd
-      c2bourdon16.oninput = function(ev) {
+      transpo415.oninput = function(ev) {
+              ws.send('{ "/registres/transp/transpogenerale/valeur": ' + transpo415.checked + '}');
+              console.log('{ "/registres/transp/transpogenerale/valeur": ' + transpo415.checked + '}');
+      };
+	  c2bourdon16.oninput = function(ev) {
               ws.send('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
               console.log('{ "/registres/clavier2/bourdon/16": ' + c2bourdon16.checked + '}');
       };
@@ -122,19 +129,24 @@
       
       // exemple pour valeur continue
 	  
-	  trans2val.oninput = function(ev) {
-              ws.send('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
-              console.log('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
-      };
-	  
 	  trans1val.oninput = function(ev) {
-              ws.send('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans2val.value + '}');
-              console.log('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans2val.value + '}');
+              ws.send('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans1val.value + '}');
+              console.log('{ "/registres/nfonctionscl2/transpo.1/valeur": ' + trans1val.value + '}');
       };
 	  
 	  trans2val.oninput = function(ev) {
               ws.send('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
               console.log('{ "/registres/nfonctionscl2/transpo.2/valeur": ' + trans2val.value + '}');
+      };
+	  
+	  attacsval.oninput = function(ev) {
+              ws.send('{ "/registres/nfonctionscl2/attaque/duree": ' + attacsval.value + '}');
+              console.log('{ "/registres/nfonctionscl2/attaque/duree": ' + attacsval.value + '}');
+      };
+	  
+	  refreshdrives.oninput = function(ev) {
+              ws.send('{ "/combinateurs/supports/rafraichirListe": ' +  + '}');
+              console.log('{ "/combinateurs/supports/rafraichirListe": ' +  +'}');
       };
 	  
     }
@@ -146,27 +158,28 @@
 			 background-size: 1280px 720px;">
 <body onload="init()">
 <table>
+<div class='transposition'>
+<span style="position: fixed; top: 180px; left: 25px;"><input id="transpo415" type="checkbox"/><label for="transpo415">415</label></span>
+</div>
 
-<div class='fonctionsslide'>
- <span style="position: fixed; top: 95px; left: 662px;"><input id="trans1val" type="range" min="0" max="36" value="0"/></td></tr></span>
- <span style="position: fixed; top: 238px; left: 662px;"><input id="trans2val" type="range" min="0" max="36" value="0"/></td></tr></span>
- <span style="position: fixed; top: 386px; left: 662px;"><input id="trans2val" type="range" min="0" max="100" value="0"/></td></tr></span>
- </div>
- 
+<!-- supprimer les moins des valeurs left pour ajouter les registres cachés -->
+
 <div class='registres'>
- <span style="position: fixed; top: 450px; left: 655px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">Bourdon<br>16'</label></span>
- <span style="position: fixed; top: 450px; left: 780px;"><input id="c2bourdon8" type="checkbox"/><label for="c2bourdon8">Bourdon<br>8'</label></span>
- <span style="position: fixed; top: 450px; left: 905px;"><input id="c2flute4" type="checkbox"/><label for="c2flute4">Flûte<br>4'</label></span>
- <span style="position: fixed; top: 450px; left: 1030px;"><input id="c2quinte223" type="checkbox"/><label for="c2quinte223">Quinte<br>2' &#8532;</label></span>
- <span style="position: fixed; top: 450px; left: 1155px;"><input id="c2flute2" type="checkbox"/><label for="c2flute2">Flûte<br>2'</label></span>
- <span style="position: fixed; top: 540px; left: 655px;"><input id="c1bourdon16" type="checkbox"/><label for="c1bourdon16">Bourdon<br>16'</label></span>
- <span style="position: fixed; top: 540px; left: 780px;"><input id="c1bourdon8" type="checkbox"/><label for="c1bourdon8">Bourdon<br>8'</label></span>
- <span style="position: fixed; top: 540px; left: 905px;"><input id="c1flute4" type="checkbox"/><label for="c1flute4">Flûte<br>4'</label></span>
- <span style="position: fixed; top: 540px; left: 1030px;"><input id="c1quinte223" type="checkbox"/><label for="c1quinte223">Quinte<br>2' &#8532;</label></span>
- <span style="position: fixed; top: 540px; left: 1155px;"><input id="c1flute2" type="checkbox"/><label for="c1flute2">Flûte<br>2'</label></span>
- <span style="position: fixed; top: 630px; left: 655px;"><input id="pdbourdon16" type="checkbox"/><label for="pdbourdon16">Bourdon<br>16'</label></span>
- <span style="position: fixed; top: 630px; left: 780px;"><input id="pdbourdon8" type="checkbox"/><label for="pdbourdon8">Bourdon<br>8'</label></span>
- <span style="position: fixed; top: 630px; left: 905px;"><input id="pdflute4" type="checkbox"/><label for="pdflute4">Flûte<br>4'</label></span>
+ <span style="position: fixed; top: 75px; left: 865px;"><input id="c2bourdon16" type="checkbox"/><label for="c2bourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 945px;"><input id="c2bourdon8" type="checkbox"/><label for="c2bourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 1025px;"><input id="c2flute4" type="checkbox"/><label for="c2flute4">F4'</label></span>
+ <span style="position: fixed; top: 75px; left: -1105px;"><input id="c2quinte223" type="checkbox"/><label for="c2quinte223">Q2'&#8532;</label></span>
+ <span style="position: fixed; top: 75px; left: -1185px;"><input id="c2flute2" type="checkbox"/><label for="c2flute2">F2'</label></span>
+ 
+ <span style="position: fixed; top: 75px; left: 405px;"><input id="c1bourdon16" type="checkbox"/><label for="c1bourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 485px;"><input id="c1bourdon8" type="checkbox"/><label for="c1bourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 565px;"><input id="c1flute4" type="checkbox"/><label for="c1flute4">F4'</label></span>
+ <span style="position: fixed; top: 75px; left: -645px;"><input id="c1quinte223" type="checkbox"/><label for="c1quinte223">Q2'&#8532;</label></span>
+ <span style="position: fixed; top: 75px; left: -725px;"><input id="c1flute2" type="checkbox"/><label for="c1flute2">F2'</label></span>
+ 
+ <span style="position: fixed; top: 75px; left: 25px;"><input id="pdbourdon16" type="checkbox"/><label for="pdbourdon16">B16'</label></span>
+ <span style="position: fixed; top: 75px; left: 105px;"><input id="pdbourdon8" type="checkbox"/><label for="pdbourdon8">B8'</label></span>
+ <span style="position: fixed; top: 75px; left: 185px;"><input id="pdflute4" type="checkbox"/><label for="pdflute4">F4'</label></span>
  </div>
 </table>
 
